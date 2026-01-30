@@ -12,9 +12,8 @@ public class MelonReload {
     public static void registerCommand() {
         LiteralCommandNode<CommandSourceStack> cmdReload = Commands.literal("melonreload").executes(MelonReload::execute).build();
 
-        Melon.plugin.getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
-            commands.registrar().register(cmdReload);
-        });
+        Melon.plugin.getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS,
+                commands -> commands.registrar().register(cmdReload));
     }
 
     public static void reload() {
