@@ -4,5 +4,27 @@ main: dev.dylancode.melon.melon.Melon
 api-version: '1.21'
 prefix: Melon
 authors: [ dylancode <melon@dylancode.dev> ]
-description: The ultimate plugin for your Minecraft server
+description: The ultimate essentials plugin for modern Minecraft servers
 website: https://dylancode.dev/melon
+
+commands:
+  mfly:
+    description: "Enable or disable the 'double tap space to fly' ability: even in survival"
+    usage: "/mfly"
+    permission: melon.fly
+  mflyspeed:
+    description: "Set the flight speed, where 0% is no movement and 100% is very fast"
+    usage: "/mflyspeed <speed percentage>"
+    permission: melon.flyspeed
+  mwalkspeed:
+    description: "Set the walking speed, where 0% is no movement and 100% is very fast"
+    usage: "/mwalkspeed <speed percentage>"
+    permission: melon.walkspeed
+
+permissions:
+  melon.fly:
+    default: op
+  melon.flyspeed:
+    default: op
+  melon.walkspeed:
+    default: op

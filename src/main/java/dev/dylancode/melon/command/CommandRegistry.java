@@ -10,16 +10,19 @@ import org.jetbrains.annotations.NotNull;
 public class CommandRegistry {
     public static void register(ReloadableRegistrarEvent<@NotNull Commands> commands) {
         LiteralCommandNode<CommandSourceStack> cmdFly = Commands.literal("mfly")
+                .requires(sender -> sender.getSender().hasPermission("melon.fly"))
                 .executes(CmdFly::execute).build();
         commands.registrar().register(cmdFly);
 
         LiteralCommandNode<CommandSourceStack> cmdFlyspeed = Commands.literal("mflyspeed").then(
                 Commands.argument("speed percentage", FloatArgumentType.floatArg(CmdFlyspeed.MIN_FLYSPEED, CmdFlyspeed.MAX_FLYSPEED))
+                        .requires(sender -> sender.getSender().hasPermission("melon.flyspeed"))
                         .executes(CmdFlyspeed::execute)).build();
         commands.registrar().register(cmdFlyspeed);
 
         LiteralCommandNode<CommandSourceStack> cmdWalkspeed = Commands.literal("mwalkspeed").then(
                 Commands.argument("speed percentage", FloatArgumentType.floatArg(CmdWalkspeed.MIN_WALKSPEED, CmdWalkspeed.MAX_WALKSPEED))
+                        .requires(sender -> sender.getSender().hasPermission("melon.walkspeed"))
                         .executes(CmdWalkspeed::execute)).build();
         commands.registrar().register(cmdWalkspeed);
 
