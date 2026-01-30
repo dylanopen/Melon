@@ -3,7 +3,7 @@ package dev.dylancode.melon.melon;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
-import dev.dylancode.melon.motd.MotdConfig;
+import dev.dylancode.melon.config.MotdConfig;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;

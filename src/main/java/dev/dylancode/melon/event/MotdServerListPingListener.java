@@ -1,5 +1,6 @@
-package dev.dylancode.melon.motd;
+package dev.dylancode.melon.event;
 
+import dev.dylancode.melon.config.MotdConfig;
 import net.kyori.adventure.text.Component;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

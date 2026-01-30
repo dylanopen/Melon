@@ -1,6 +1,8 @@
 package dev.dylancode.melon.melon;
 
-import dev.dylancode.melon.motd.MotdServerListPingListener;
+import dev.dylancode.melon.command.CommandRegistry;
+import dev.dylancode.melon.event.EventRegistry;
+import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Melon extends JavaPlugin {
@@ -12,7 +14,9 @@ public final class Melon extends JavaPlugin {
         MelonReload.registerCommand();
         MelonReload.reload();
 
-        getServer().getPluginManager().registerEvents(new MotdServerListPingListener(), this);
+        EventRegistry.register();
+        getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, CommandRegistry::register);
+
     }
 
     @Override

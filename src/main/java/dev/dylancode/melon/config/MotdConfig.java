@@ -1,4 +1,4 @@
-package dev.dylancode.melon.motd;
+package dev.dylancode.melon.config;
 
 import dev.dylancode.melon.melon.Melon;
 import net.kyori.adventure.text.Component;
