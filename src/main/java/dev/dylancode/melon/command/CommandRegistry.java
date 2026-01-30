@@ -9,6 +9,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class CommandRegistry {
     public static void register(ReloadableRegistrarEvent<@NotNull Commands> commands) {
+        LiteralCommandNode<CommandSourceStack> cmdFly = Commands.literal("mfly")
+                .executes(CmdFly::execute).build();
+        commands.registrar().register(cmdFly);
+
         LiteralCommandNode<CommandSourceStack> cmdFlyspeed = Commands.literal("mflyspeed").then(
                 Commands.argument("speed percentage", FloatArgumentType.floatArg(CmdFlyspeed.MIN_FLYSPEED, CmdFlyspeed.MAX_FLYSPEED))
                         .executes(CmdFlyspeed::execute)).build();
