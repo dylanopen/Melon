@@ -1,0 +1,8 @@
+name: Melon
+version: '0.1.0'
+main: dev.dylancode.melon.melon.Melon
+api-version: '1.21'
+prefix: Melon
+authors: [ dylancode <melon@dylancode.dev> ]
+description: The ultimate plugin for your Minecraft server
+website: https://dylancode.dev/melon

@@ -1,0 +1,17 @@
+# This provides backwards-compatibility when MelonMOTD
+# makes breaking changes to the format of its config.
+# You **do not** need to change this, if you do, it
+# will likely prevent the configuration from loading.
+manifest-version: 1
+
+# This is your standard MOTD configuration. It is a list
+# of messages, which will be chosen *at random* when a
+# player queries the server in their server list.
+# It is formatted in MiniMessage format:
+# https://docs.papermc.io/adventure/minimessage/
+messages: [
+  "<blue>Melon MOTD\nChange this in the config!",
+  "<italic>You haven't configured me yet...",
+  "<bold>Thanks for using Melon!",
+  "<yellow>Edit this in <reset>plugins/Melon/motd.yml"
+]
