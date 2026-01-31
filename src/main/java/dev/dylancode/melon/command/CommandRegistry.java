@@ -4,6 +4,7 @@ import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
+import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
 import io.papermc.paper.plugin.lifecycle.event.registrar.ReloadableRegistrarEvent;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,6 +31,13 @@ public class CommandRegistry {
                         .requires(sender -> sender.getSender().hasPermission("melon.walkspeed"))
                         .executes(CmdWalkspeed::execute)).build();
         commands.registrar().register(cmdWalkspeed);
+
+        LiteralCommandNode<CommandSourceStack> cmdGms = Commands.literal("mgms")
+                .requires(sender -> sender.getSender().hasPermission("melon.gms"))
+                .executes(CmdGms::executeSelf)
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .executes(CmdGms::executeOthers)).build();
+        commands.registrar().register(cmdGms);
 
     }
 }
