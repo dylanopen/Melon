@@ -15,7 +15,7 @@ import java.util.List;
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
 
-public class CmdIpaddress {
+public class CmdClientbrand {
     public static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         CommandSender sender = ctx.getSource().getSender();
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("players", PlayerSelectorArgumentResolver.class);
@@ -24,8 +24,8 @@ public class CmdIpaddress {
             HashMap<String, String> placeholders = new HashMap<>();
             placeholders.put("sender", ctx.getSource().getSender().getName());
             placeholders.put("receiver", player.getName());
-            placeholders.put("ip", player.getAddress().getHostName());
-            sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.ipAddress, placeholders)));
+            placeholders.put("brand", player.getClientBrandName());
+            sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.clientBrand, placeholders)));
         }
         return Command.SINGLE_SUCCESS;
     }

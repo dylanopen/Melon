@@ -86,6 +86,13 @@ public class CommandRegistry {
                 .build();
         commands.registrar().register(cmdMsg);
 
+        LiteralCommandNode<CommandSourceStack> cmdClientbrand = Commands.literal("clientbrand")
+                .requires(sender -> sender.getSender().hasPermission("melon.clientbrand"))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .executes(CmdClientbrand::execute))
+                .build();
+        commands.registrar().register(cmdClientbrand);
+
         LiteralCommandNode<CommandSourceStack> cmdIpaddress = Commands.literal("ipaddress")
                 .requires(sender -> sender.getSender().hasPermission("melon.ipaddress"))
                 .then(Commands.argument("players", ArgumentTypes.players())

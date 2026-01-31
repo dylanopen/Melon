@@ -29,7 +29,8 @@ public class MessagesConfig {
     public static String receiveKick;
     public static String receiveMsg;
 
-    public static String ipaddress;
+    public static String ipAddress;
+    public static String clientBrand;
 
     public static Component formatMessage(String message) {
         return miniMessage().deserialize(message);
@@ -67,6 +68,7 @@ public class MessagesConfig {
         confirmWalkspeed = yaml.getString("confirm.walkspeed");
         confirmFlyEnable = yaml.getString("confirm.fly-enable");
         confirmFlyDisable = yaml.getString("confirm.fly-disable");
-        ipaddress = yaml.getString("ipaddress");
+        ipAddress = yaml.getString("ip-address");
+        clientBrand = yaml.getString("client-brand");
     }
 }

@@ -19,4 +19,5 @@ receive:
   kick: "<%secondary%>You have been kicked by <%tertiary%>%sender%<newline><newline><%secondary%>Reason:<%tertiary%> %reason%"
 
 ipaddress: "%receiver%'s IP address is <%tertiary%>%ip%"
+client-brand: "%receiver%'s client is self-identified as <%tertiary%>%brand%"
 

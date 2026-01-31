@@ -30,3 +30,7 @@ permissions:
     default: op
   melon.msg:
     default: op
+  melon.ipaddress:
+    default: op
+  melon.clientbrand:
+    default: op
