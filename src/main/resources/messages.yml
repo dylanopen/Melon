@@ -16,8 +16,9 @@ confirm:
   render-distance: "Set server view distance for <%tertiary%>%receiver%<%secondary%> to <%tertiary%>%view-distance%"
   health: "Set health of <%tertiary%>%receiver%<%secondary%> to <%tertiary%>%hp% HP"
   maxhealth: "Set max health of <%tertiary%>%receiver%<%secondary%> to <%tertiary%>%hp% HP"
-  setnick: "Set <%tertiary%>%receiver%'s<%secondary%> nickname to <%tertiary%>%nickname%"
-  setprefix: "Set <%tertiary%>%receiver%'s<%secondary%> prefix to <%tertiary%>%prefix%"
+  setnick: "Set <%tertiary%>%receiver%'s<%secondary%> nickname to <reset>%nickname%"
+  setprefix: "Set <%tertiary%>%receiver%'s<%secondary%> prefix to <reset>%prefix%"
+  setsuffix: "Set <%tertiary%>%receiver%'s<%secondary%> suffix to <reset>%suffix%"
 
 receive:
   msg: "<%tertiary%>%sender% -> <%tertiary%>%receiver% <%secondary%>%message%"

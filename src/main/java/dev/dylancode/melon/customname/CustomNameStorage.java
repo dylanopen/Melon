@@ -58,6 +58,16 @@ public class CustomNameStorage {
         customName.sendUpdate(Objects.requireNonNull(Bukkit.getPlayer(uuid)));
     }
 
+    public static void setSuffix(UUID uuid, String suffix) {
+        if (!customNames.containsKey(uuid)) {
+            insertEmpty(uuid);
+        }
+        CustomName customName = customNames.get(uuid);
+        customName.suffix = suffix;
+        customNames.put(uuid, customName);
+        customName.sendUpdate(Objects.requireNonNull(Bukkit.getPlayer(uuid)));
+    }
+
     public static void insertEmpty(UUID uuid) {
         CustomName customName = new CustomName(
                 Component.empty(),
