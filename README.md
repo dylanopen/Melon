@@ -9,24 +9,13 @@
 
 - MOTD manager - manage your server's description in the server list
   (fully customised with [MiniMessage](https://docs.papermc.io/adventure/minimessage/))
-- `/mflyspeed` command - change the speed at which you or other players fly - or invert
+- `/flyspeed` command - change the speed at which you or other players fly - or invert
   the flight direction entirely!
-- `/mwalkspeed` command - change the speed you or anyone else walks - or completely
+- `/walkspeed` command - change the speed you or anyone else walks - or completely
   invert movement :)
-
-## Commands
-
-### `/mflyspeed`
-
-```
-Usage: /mflyspeed <speed percentage>
-```
-
-### `/mwalkspeed`
-
-```
-Usage: /mwalkspeed <speed percentage>
-```
+- `/fly` command - works even in survival
+- `/gms` command - switch gamemode to survival: individual permissions for giving 
+  safer permissions than vanilla
 
 ## License
 
