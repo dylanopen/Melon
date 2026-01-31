@@ -146,5 +146,13 @@ public class CommandRegistry {
                                 .executes(CmdMaxhealthSet::execute)))
                 .build();
         commands.registrar().register(cmdMaxhealth);
+
+        LiteralCommandNode<CommandSourceStack> cmdGetnick = Commands.literal("getnick")
+                .requires(sender -> sender.getSender().hasPermission("melon.getnick"))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .executes(CmdGetnick::execute))
+                .build();
+        commands.registrar().register(cmdGetnick);
+
     }
 }

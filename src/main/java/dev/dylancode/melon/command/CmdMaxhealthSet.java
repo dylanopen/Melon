@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
@@ -25,7 +26,7 @@ public class CmdMaxhealthSet {
         final double health = ctx.getArgument("hp", Double.class);
         for (Player player : players) {
             HashMap<String, String> placeholders = getPlaceholders(ctx, player, health);
-            player.getAttribute(Attribute.MAX_HEALTH).setBaseValue(health);
+            Objects.requireNonNull(player.getAttribute(Attribute.MAX_HEALTH)).setBaseValue(health);
             sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.confirmMaxhealth, placeholders)));
         }
         return Command.SINGLE_SUCCESS;

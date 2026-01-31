@@ -12,7 +12,6 @@ import java.util.List;
 
 public class CmdSayas {
     public static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
-        CommandSender sender = ctx.getSource().getSender();
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("players", PlayerSelectorArgumentResolver.class);
         final List<Player> players = targetResolver.resolve(ctx.getSource());
         final String message = ctx.getArgument("message", String.class);

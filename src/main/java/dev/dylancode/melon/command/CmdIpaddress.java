@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
@@ -24,7 +25,7 @@ public class CmdIpaddress {
             HashMap<String, String> placeholders = new HashMap<>();
             placeholders.put("sender", ctx.getSource().getSender().getName());
             placeholders.put("receiver", player.getName());
-            placeholders.put("ip", player.getAddress().getHostName());
+            placeholders.put("ip", Objects.requireNonNull(player.getAddress()).getHostName());
             sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.queryIpaddress, placeholders)));
         }
         return Command.SINGLE_SUCCESS;

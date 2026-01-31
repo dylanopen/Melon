@@ -6,26 +6,25 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.dylancode.melon.config.MessagesConfig;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
+import static net.kyori.adventure.text.minimessage.MiniMessage.miniMessage;
 
-public class CmdMaxhealthGet {
+public class CmdGetnick {
     public static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         CommandSender sender = ctx.getSource().getSender();
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("players", PlayerSelectorArgumentResolver.class);
         final List<Player> players = targetResolver.resolve(ctx.getSource());
         for (Player player : players) {
             HashMap<String, String> placeholders = getPlaceholders(ctx, player);
-            sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.queryMaxhealth, placeholders)));
+            sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.queryGetnick, placeholders)));
         }
         return Command.SINGLE_SUCCESS;
     }
@@ -34,7 +33,7 @@ public class CmdMaxhealthGet {
         HashMap<String, String> placeholders = new HashMap<>();
         placeholders.put("sender", ctx.getSource().getSender().getName());
         placeholders.put("receiver", player.getName());
-        placeholders.put("hp", String.valueOf(Math.round(Objects.requireNonNull(player.getAttribute(Attribute.MAX_HEALTH)).getValue())));
+        placeholders.put("nickname", miniMessage().serialize(player.displayName()));
         return placeholders;
     }
 }

@@ -38,6 +38,7 @@ public class MessagesConfig {
     public static String queryUuid;
     public static String queryHealth;
     public static String queryMaxhealth;
+    public static String queryGetnick;
 
     public static Component formatMessage(String message) {
         return miniMessage().deserialize(message);
@@ -84,5 +85,6 @@ public class MessagesConfig {
         queryUuid = yaml.getString("query.uuid");
         queryHealth = yaml.getString("query.health");
         queryMaxhealth = yaml.getString("query.maxhealth");
+        queryGetnick = yaml.getString("query.getnick");
     }
 }

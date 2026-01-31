@@ -46,6 +46,8 @@ permissions:
     default: op
   melon.maxhealth.set:
     default: op
+  melon.getnick:
+    default: true
   melon.msg:
     default: true
   melon.uuid:

@@ -8,7 +8,6 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -16,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
@@ -27,7 +27,7 @@ public class CmdHealthSet {
         final List<Player> players = targetResolver.resolve(ctx.getSource());
         final double health = ctx.getArgument("hp", Double.class);
         for (Player player : players) {
-            if (health > player.getAttribute(Attribute.MAX_HEALTH).getValue()) {
+            if (health > Objects.requireNonNull(player.getAttribute(Attribute.MAX_HEALTH)).getValue()) {
                 sender.sendMessage(Component.text("Cannot set " + player.getName() + "'s health above their max health", NamedTextColor.RED));
                 continue;
             }
