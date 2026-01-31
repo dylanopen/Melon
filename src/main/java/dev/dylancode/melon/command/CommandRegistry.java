@@ -105,9 +105,9 @@ public class CommandRegistry {
                 .requires(sender -> sender.getSender().hasPermission("melon.renderdistance"))
                 .then(Commands.argument("players", ArgumentTypes.player())
                         .executes(CmdRenderdistanceGet::execute)
-                .then(Commands.argument("distance", IntegerArgumentType.integer(2, 32))
-                        .requires(sender -> sender.getSender().hasPermission("melon.renderdistance.set"))
-                        .executes(CmdRenderdistanceSet::execute)))
+                        .then(Commands.argument("distance", IntegerArgumentType.integer(2, 32))
+                                .requires(sender -> sender.getSender().hasPermission("melon.renderdistance.set"))
+                                .executes(CmdRenderdistanceSet::execute)))
                 .build();
         commands.registrar().register(cmdRenderdistance);
 
@@ -117,5 +117,13 @@ public class CommandRegistry {
                         .executes(CmdUuid::execute))
                 .build();
         commands.registrar().register(cmdUuid);
+
+        LiteralCommandNode<CommandSourceStack> cmdSayas = Commands.literal("sayas")
+                .requires(sender -> sender.getSender().hasPermission("melon.sayas"))
+                .then(Commands.argument("players", ArgumentTypes.player())
+                        .then(Commands.argument("message", StringArgumentType.greedyString())
+                                .executes(CmdSayas::execute)))
+                .build();
+        commands.registrar().register(cmdSayas);
     }
 }
