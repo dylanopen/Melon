@@ -4,6 +4,7 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.dylancode.melon.config.MessagesConfig;
+import dev.dylancode.melon.customname.CustomNameStorage;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import net.kyori.adventure.text.Component;
@@ -27,7 +28,7 @@ public class CmdSetnick {
         final Component nickname = miniMessage().deserialize(rawNickname);
         for (Player player : players) {
             HashMap<String, String> placeholders = getPlaceholders(ctx, player, rawNickname);
-            player.displayName(nickname);
+            CustomNameStorage.setNick(player.getUniqueId(), nickname);
             sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.confirmSetnick, placeholders)));
         }
         return Command.SINGLE_SUCCESS;

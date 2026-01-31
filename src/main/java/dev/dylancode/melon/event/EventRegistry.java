@@ -1,5 +1,6 @@
 package dev.dylancode.melon.event;
 
+import dev.dylancode.melon.customname.CustomNameUpdateOnJoin;
 import dev.dylancode.melon.melon.Melon;
 import org.bukkit.event.Listener;
 
@@ -10,5 +11,6 @@ public class EventRegistry {
 
     public static void register() {
         handle(new MotdServerListPingListener());
+        handle(new CustomNameUpdateOnJoin());
     }
 }

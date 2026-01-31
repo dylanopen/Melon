@@ -1,6 +1,7 @@
 package dev.dylancode.melon.melon;
 
 import dev.dylancode.melon.command.CommandRegistry;
+import dev.dylancode.melon.config.ConfigTypeRegistry;
 import dev.dylancode.melon.event.EventRegistry;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -11,8 +12,9 @@ public final class Melon extends JavaPlugin {
     @Override
     public void onEnable() {
         Melon.plugin = this;
-        MelonReload.registerCommand();
+        ConfigTypeRegistry.init();
         MelonReload.reload();
+        MelonReload.registerCommand();
 
         EventRegistry.register();
         getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, CommandRegistry::register);

@@ -5,6 +5,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import dev.dylancode.melon.config.MessagesConfig;
 import dev.dylancode.melon.config.MotdConfig;
+import dev.dylancode.melon.customname.CustomNameStorage;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
@@ -24,6 +25,7 @@ public class MelonReload {
     public static void reload() {
         MotdConfig.load();
         MessagesConfig.load();
+        CustomNameStorage.load();
     }
 
     private static int execute(CommandContext<CommandSourceStack> ctx) {
