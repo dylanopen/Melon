@@ -6,9 +6,6 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.dylancode.melon.config.MessagesConfig;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -20,20 +17,16 @@ import java.util.List;
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
 
-public class CmdHealthSet {
+public class CmdMaxhealthSet {
     public static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         CommandSender sender = ctx.getSource().getSender();
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("players", PlayerSelectorArgumentResolver.class);
         final List<Player> players = targetResolver.resolve(ctx.getSource());
         final double health = ctx.getArgument("hp", Double.class);
         for (Player player : players) {
-            if (health > player.getAttribute(Attribute.MAX_HEALTH).getValue()) {
-                sender.sendMessage(Component.text("Cannot set " + player.getName() + "'s health above their max health", NamedTextColor.RED));
-                continue;
-            }
             HashMap<String, String> placeholders = getPlaceholders(ctx, player, health);
-            player.setHealth(health);
-            sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.confirmHealth, placeholders)));
+            player.getAttribute(Attribute.MAX_HEALTH).setBaseValue(health);
+            sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.confirmMaxhealth, placeholders)));
         }
         return Command.SINGLE_SUCCESS;
     }

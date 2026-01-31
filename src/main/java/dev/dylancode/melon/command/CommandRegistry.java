@@ -104,7 +104,7 @@ public class CommandRegistry {
 
         LiteralCommandNode<CommandSourceStack> cmdRenderdistance = Commands.literal("renderdistance")
                 .requires(sender -> sender.getSender().hasPermission("melon.renderdistance.get"))
-                .then(Commands.argument("players", ArgumentTypes.player())
+                .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdRenderdistanceGet::execute)
                         .then(Commands.argument("distance", IntegerArgumentType.integer(2, 32))
                                 .requires(sender -> sender.getSender().hasPermission("melon.renderdistance.set"))
@@ -114,14 +114,14 @@ public class CommandRegistry {
 
         LiteralCommandNode<CommandSourceStack> cmdUuid = Commands.literal("uuid")
                 .requires(sender -> sender.getSender().hasPermission("melon.uuid"))
-                .then(Commands.argument("players", ArgumentTypes.player())
+                .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdUuid::execute))
                 .build();
         commands.registrar().register(cmdUuid);
 
         LiteralCommandNode<CommandSourceStack> cmdSayas = Commands.literal("sayas")
                 .requires(sender -> sender.getSender().hasPermission("melon.sayas"))
-                .then(Commands.argument("players", ArgumentTypes.player())
+                .then(Commands.argument("players", ArgumentTypes.players())
                         .then(Commands.argument("message", StringArgumentType.greedyString())
                                 .executes(CmdSayas::execute)))
                 .build();
@@ -129,7 +129,7 @@ public class CommandRegistry {
 
         LiteralCommandNode<CommandSourceStack> cmdHealth = Commands.literal("health")
                 .requires(sender -> sender.getSender().hasPermission("melon.health.get"))
-                .then(Commands.argument("players", ArgumentTypes.player())
+                .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdHealthGet::execute)
                         .then(Commands.argument("hp", DoubleArgumentType.doubleArg(0.0f))
                                 .requires(sender -> sender.getSender().hasPermission("melon.health.set"))
@@ -137,5 +137,14 @@ public class CommandRegistry {
                 .build();
         commands.registrar().register(cmdHealth);
 
+        LiteralCommandNode<CommandSourceStack> cmdMaxhealth = Commands.literal("maxhealth")
+                .requires(sender -> sender.getSender().hasPermission("melon.maxhealth.get"))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .executes(CmdMaxhealthGet::execute)
+                        .then(Commands.argument("hp", DoubleArgumentType.doubleArg(1.0f))
+                                .requires(sender -> sender.getSender().hasPermission("melon.maxhealth.set"))
+                                .executes(CmdMaxhealthSet::execute)))
+                .build();
+        commands.registrar().register(cmdMaxhealth);
     }
 }

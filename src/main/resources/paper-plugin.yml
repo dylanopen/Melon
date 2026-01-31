@@ -38,6 +38,14 @@ permissions:
     default: op
   melon.sayas:
     default: op
+  melon.health.get:
+    default: op
+  melon.health.set:
+    default: op
+  melon.maxhealth.get:
+    default: op
+  melon.maxhealth.set:
+    default: op
   melon.msg:
     default: true
   melon.uuid:
