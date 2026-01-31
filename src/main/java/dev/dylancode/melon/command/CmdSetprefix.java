@@ -17,25 +17,25 @@ import java.util.List;
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
 
-public class CmdSetnick {
+public class CmdSetprefix {
     public static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         CommandSender sender = ctx.getSource().getSender();
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("players", PlayerSelectorArgumentResolver.class);
         final List<Player> players = targetResolver.resolve(ctx.getSource());
-        final String nickname = ctx.getArgument("nickname", String.class);
+        final String prefix = ctx.getArgument("prefix", String.class);
         for (Player player : players) {
-            HashMap<String, String> placeholders = getPlaceholders(ctx, player, nickname);
-            CustomNameStorage.setNick(player.getUniqueId(), nickname);
-            sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.confirmSetnick, placeholders)));
+            HashMap<String, String> placeholders = getPlaceholders(ctx, player, prefix);
+            CustomNameStorage.setPrefix(player.getUniqueId(), prefix);
+            sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.confirmSetprefix, placeholders)));
         }
         return Command.SINGLE_SUCCESS;
     }
 
-    private static @NotNull HashMap<String, String> getPlaceholders(CommandContext<CommandSourceStack> ctx, Player player, String nickname) {
+    private static @NotNull HashMap<String, String> getPlaceholders(CommandContext<CommandSourceStack> ctx, Player player, String prefix) {
         HashMap<String, String> placeholders = new HashMap<>();
         placeholders.put("sender", ctx.getSource().getSender().getName());
         placeholders.put("receiver", player.getName());
-        placeholders.put("nickname", nickname);
+        placeholders.put("prefix", prefix);
         return placeholders;
     }
 }

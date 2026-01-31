@@ -12,21 +12,27 @@ import java.util.Map;
 import static net.kyori.adventure.text.minimessage.MiniMessage.miniMessage;
 
 public class CustomName implements ConfigurationSerializable {
-    public Component prefix;
-    public Component nickname;
-    public Component suffix;
+    public String prefix;
+    public String nickname;
+    public String suffix;
 
-    public CustomName(Component prefix, Component nickname, Component suffix) {
+    public CustomName(String prefix, String nickname, String suffix) {
         this.prefix = prefix;
         this.nickname = nickname;
         this.suffix = suffix;
     }
 
+    public CustomName(Component prefix, Component nickname, Component suffix) {
+        this.prefix = miniMessage().serialize(prefix);
+        this.nickname = miniMessage().serialize(nickname);
+        this.suffix = miniMessage().serialize(suffix);
+    }
+
     public CustomName(Map<String, Object> map) throws InvalidConfigurationException {
         try {
-            prefix = miniMessage().deserialize((String) map.get("prefix"));
-            nickname = miniMessage().deserialize((String) map.get("nickname"));
-            suffix = miniMessage().deserialize((String) map.get("suffix"));
+            prefix = (String) map.get("prefix");
+            nickname = (String) map.get("nickname");
+            suffix = (String) map.get("suffix");
         } catch (NullPointerException e) {
             Melon.plugin.getLogger().severe("Melon: failed to deserialize a CustomName (is customnames.yml correctly formatted?): " + e.getMessage());
             throw new InvalidConfigurationException(e);
@@ -38,31 +44,32 @@ public class CustomName implements ConfigurationSerializable {
         CustomNameStorage.save();
     }
 
+    public String fullName() {
+        return prefix + nickname + suffix;
+    }
+
     public Component displayName() {
-        return Component.empty()
-                .append(prefix)
-                .append(nickname)
-                .append(suffix);
+        return miniMessage().deserialize(fullName());
     }
 
-    public String serializePrefix() {
-        return miniMessage().serialize(prefix);
+    public Component deserializePrefix() {
+        return miniMessage().deserialize(prefix);
     }
 
-    public String serializeNickname() {
-        return miniMessage().serialize(nickname);
+    public Component deserializeNickname() {
+        return miniMessage().deserialize(nickname);
     }
 
-    public String serializeSuffix() {
-        return miniMessage().serialize(suffix);
+    public Component deserializeSuffix() {
+        return miniMessage().deserialize(suffix);
     }
 
     @Override
     public @NotNull Map<String, Object> serialize() {
         return Map.of(
-                "prefix", serializePrefix(),
-                "nickname", serializeNickname(),
-                "suffix", serializeSuffix()
+                "prefix", prefix,
+                "nickname", nickname,
+                "suffix", suffix
         );
     }
 }

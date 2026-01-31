@@ -14,7 +14,7 @@ import java.util.UUID;
 public class CustomNameStorage {
     public static HashMap<UUID, CustomName> customNames = new HashMap<>();
 
-    public static Component getNick(UUID uuid) {
+    public static String getNick(UUID uuid) {
         if (!customNames.containsKey(uuid)) {
             insertEmpty(uuid);
         }
@@ -22,12 +22,22 @@ public class CustomNameStorage {
         return customName.nickname;
     }
 
-    public static void setNick(UUID uuid, Component nickname) {
+    public static void setNick(UUID uuid, String nickname) {
         if (!customNames.containsKey(uuid)) {
             insertEmpty(uuid);
         }
         CustomName customName = customNames.get(uuid);
         customName.nickname = nickname;
+        customNames.put(uuid, customName);
+        customName.sendUpdate(Objects.requireNonNull(Bukkit.getPlayer(uuid)));
+    }
+
+    public static void setPrefix(UUID uuid, String prefix) {
+        if (!customNames.containsKey(uuid)) {
+            insertEmpty(uuid);
+        }
+        CustomName customName = customNames.get(uuid);
+        customName.prefix = prefix;
         customNames.put(uuid, customName);
         customName.sendUpdate(Objects.requireNonNull(Bukkit.getPlayer(uuid)));
     }

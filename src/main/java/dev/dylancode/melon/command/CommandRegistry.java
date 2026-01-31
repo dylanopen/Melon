@@ -4,8 +4,6 @@ import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
 import io.papermc.paper.plugin.lifecycle.event.registrar.ReloadableRegistrarEvent;
@@ -14,153 +12,142 @@ import org.jetbrains.annotations.NotNull;
 
 public class CommandRegistry {
     public static void register(ReloadableRegistrarEvent<@NotNull Commands> commands) {
-        LiteralCommandNode<CommandSourceStack> cmdFly = Commands.literal("fly")
+        var r = commands.registrar();
+        r.register(Commands.literal("fly")
                 .requires(sender -> sender.getSender().hasPermission("melon.fly"))
                 .executes(CmdFly::execute)
-                .build();
-        commands.registrar().register(cmdFly);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdFalldamage = Commands.literal("falldamage")
+        r.register(Commands.literal("falldamage")
                 .requires(sender -> sender.getSender().hasPermission("melon.falldamage"))
                 .executes(CmdFalldamage::execute)
-                .build();
-        commands.registrar().register(cmdFalldamage);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdFlyspeed = Commands.literal("flyspeed")
+        r.register(Commands.literal("flyspeed")
                 .requires(sender -> sender.getSender().hasPermission("melon.flyspeed"))
                 .then(Commands.argument("speed percentage", FloatArgumentType.floatArg(CmdFlyspeed.MIN_FLYSPEED, CmdFlyspeed.MAX_FLYSPEED))
                         .executes(CmdFlyspeed::execute))
-                .build();
-        commands.registrar().register(cmdFlyspeed);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdWalkspeed = Commands.literal("walkspeed")
+        r.register(Commands.literal("walkspeed")
                 .requires(sender -> sender.getSender().hasPermission("melon.walkspeed"))
                 .then(Commands.argument("speed percentage", FloatArgumentType.floatArg(CmdWalkspeed.MIN_WALKSPEED, CmdWalkspeed.MAX_WALKSPEED))
                         .executes(CmdWalkspeed::execute))
-                .build();
-        commands.registrar().register(cmdWalkspeed);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdGms = Commands.literal("gms")
+        r.register(Commands.literal("gms")
                 .requires(sender -> sender.getSender().hasPermission("melon.gms"))
                 .executes(ctx -> CmdGm.executeSelf(ctx, GameMode.SURVIVAL))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(ctx -> CmdGm.executeOthers(ctx, GameMode.SURVIVAL)))
-                .build();
-        commands.registrar().register(cmdGms);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdGmc = Commands.literal("gmc")
+        r.register(Commands.literal("gmc")
                 .requires(sender -> sender.getSender().hasPermission("melon.gmc"))
                 .executes(ctx -> CmdGm.executeSelf(ctx, GameMode.CREATIVE))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(ctx -> CmdGm.executeOthers(ctx, GameMode.CREATIVE)))
-                .build();
-        commands.registrar().register(cmdGmc);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdGma = Commands.literal("gma")
+        r.register(Commands.literal("gma")
                 .requires(sender -> sender.getSender().hasPermission("melon.gma"))
                 .executes(ctx -> CmdGm.executeSelf(ctx, GameMode.ADVENTURE))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(ctx -> CmdGm.executeOthers(ctx, GameMode.ADVENTURE)))
-                .build();
-        commands.registrar().register(cmdGma);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdGmp = Commands.literal("gmp")
+        r.register(Commands.literal("gmp")
                 .requires(sender -> sender.getSender().hasPermission("melon.gmp"))
                 .executes(ctx -> CmdGm.executeSelf(ctx, GameMode.SPECTATOR))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(ctx -> CmdGm.executeOthers(ctx, GameMode.SPECTATOR)))
-                .build();
-        commands.registrar().register(cmdGmp);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdKick = Commands.literal("kick")
+        r.register(Commands.literal("kick")
                 .requires(sender -> sender.getSender().hasPermission("melon.kick"))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .then(Commands.argument("reason", StringArgumentType.greedyString())
                                 .executes(CmdKick::execute)))
-                .build();
-        commands.registrar().register(cmdKick);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdMsg = Commands.literal("msg")
+        r.register(Commands.literal("msg")
                 .requires(sender -> sender.getSender().hasPermission("melon.msg"))
                 .then(Commands.argument("player", ArgumentTypes.players())
                         .then(Commands.argument("message", StringArgumentType.greedyString())
                                 .executes(CmdMsg::execute)))
-                .build();
-        commands.registrar().register(cmdMsg);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdClientbrand = Commands.literal("clientbrand")
+        r.register(Commands.literal("clientbrand")
                 .requires(sender -> sender.getSender().hasPermission("melon.clientbrand"))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdClientbrand::execute))
-                .build();
-        commands.registrar().register(cmdClientbrand);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdIpaddress = Commands.literal("ipaddress")
+        r.register(Commands.literal("ipaddress")
                 .requires(sender -> sender.getSender().hasPermission("melon.ipaddress"))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdIpaddress::execute))
-                .build();
-        commands.registrar().register(cmdIpaddress);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdRenderdistance = Commands.literal("renderdistance")
+        r.register(Commands.literal("renderdistance")
                 .requires(sender -> sender.getSender().hasPermission("melon.renderdistance.get"))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdRenderdistanceGet::execute)
                         .then(Commands.argument("distance", IntegerArgumentType.integer(2, 32))
                                 .requires(sender -> sender.getSender().hasPermission("melon.renderdistance.set"))
                                 .executes(CmdRenderdistanceSet::execute)))
-                .build();
-        commands.registrar().register(cmdRenderdistance);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdUuid = Commands.literal("uuid")
+        r.register(Commands.literal("uuid")
                 .requires(sender -> sender.getSender().hasPermission("melon.uuid"))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdUuid::execute))
-                .build();
-        commands.registrar().register(cmdUuid);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdSayas = Commands.literal("sayas")
+        r.register(Commands.literal("sayas")
                 .requires(sender -> sender.getSender().hasPermission("melon.sayas"))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .then(Commands.argument("message", StringArgumentType.greedyString())
                                 .executes(CmdSayas::execute)))
-                .build();
-        commands.registrar().register(cmdSayas);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdHealth = Commands.literal("health")
+        r.register(Commands.literal("health")
                 .requires(sender -> sender.getSender().hasPermission("melon.health.get"))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdHealthGet::execute)
                         .then(Commands.argument("hp", DoubleArgumentType.doubleArg(0.0f))
                                 .requires(sender -> sender.getSender().hasPermission("melon.health.set"))
                                 .executes(CmdHealthSet::execute)))
-                .build();
-        commands.registrar().register(cmdHealth);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdMaxhealth = Commands.literal("maxhealth")
+        r.register(Commands.literal("maxhealth")
                 .requires(sender -> sender.getSender().hasPermission("melon.maxhealth.get"))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdMaxhealthGet::execute)
                         .then(Commands.argument("hp", DoubleArgumentType.doubleArg(1.0f))
                                 .requires(sender -> sender.getSender().hasPermission("melon.maxhealth.set"))
                                 .executes(CmdMaxhealthSet::execute)))
-                .build();
-        commands.registrar().register(cmdMaxhealth);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdGetnick = Commands.literal("getnick")
+        r.register(Commands.literal("getnick")
                 .requires(sender -> sender.getSender().hasPermission("melon.getnick"))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdGetnick::execute))
-                .build();
-        commands.registrar().register(cmdGetnick);
+                .build());
 
-        LiteralCommandNode<CommandSourceStack> cmdSetnick = Commands.literal("setnick")
+        r.register(Commands.literal("setnick")
                 .requires(sender -> sender.getSender().hasPermission("melon.setnick"))
                 .then(Commands.argument("players", ArgumentTypes.players())
-                        .then(Commands.argument("nickname", StringArgumentType.greedyString())
+                        .then(Commands.argument("nickname", StringArgumentType.string())
                                 .executes(CmdSetnick::execute)))
-                .build();
-        commands.registrar().register(cmdSetnick);
+                .build());
+
+        r.register(Commands.literal("setprefix")
+                .requires(sender -> sender.getSender().hasPermission("melon.setprefix"))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .then(Commands.argument("prefix", StringArgumentType.string())
+                                .executes(CmdSetprefix::execute)))
+                .build());
 
     }
 }

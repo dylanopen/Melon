@@ -17,6 +17,7 @@ confirm:
   health: "Set health of <%tertiary%>%receiver%<%secondary%> to <%tertiary%>%hp% HP"
   maxhealth: "Set max health of <%tertiary%>%receiver%<%secondary%> to <%tertiary%>%hp% HP"
   setnick: "Set <%tertiary%>%receiver%'s<%secondary%> nickname to <%tertiary%>%nickname%"
+  setprefix: "Set <%tertiary%>%receiver%'s<%secondary%> prefix to <%tertiary%>%prefix%"
 
 receive:
   msg: "<%tertiary%>%sender% -> <%tertiary%>%receiver% <%secondary%>%message%"
