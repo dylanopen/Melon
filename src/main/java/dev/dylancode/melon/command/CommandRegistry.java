@@ -6,6 +6,7 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
 import io.papermc.paper.plugin.lifecycle.event.registrar.ReloadableRegistrarEvent;
+import org.bukkit.GameMode;
 import org.jetbrains.annotations.NotNull;
 
 public class CommandRegistry {
@@ -34,10 +35,31 @@ public class CommandRegistry {
 
         LiteralCommandNode<CommandSourceStack> cmdGms = Commands.literal("gms")
                 .requires(sender -> sender.getSender().hasPermission("melon.gms"))
-                .executes(CmdGms::executeSelf)
+                .executes(ctx -> CmdGm.executeSelf(ctx, GameMode.SURVIVAL))
                 .then(Commands.argument("players", ArgumentTypes.players())
-                        .executes(CmdGms::executeOthers)).build();
+                        .executes(ctx -> CmdGm.executeOthers(ctx, GameMode.SURVIVAL))).build();
         commands.registrar().register(cmdGms);
+
+        LiteralCommandNode<CommandSourceStack> cmdGmc = Commands.literal("gmc")
+                .requires(sender -> sender.getSender().hasPermission("melon.gmc"))
+                .executes(ctx -> CmdGm.executeSelf(ctx, GameMode.CREATIVE))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .executes(ctx -> CmdGm.executeOthers(ctx, GameMode.CREATIVE))).build();
+        commands.registrar().register(cmdGmc);
+
+        LiteralCommandNode<CommandSourceStack> cmdGma = Commands.literal("gma")
+                .requires(sender -> sender.getSender().hasPermission("melon.gma"))
+                .executes(ctx -> CmdGm.executeSelf(ctx, GameMode.ADVENTURE))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .executes(ctx -> CmdGm.executeOthers(ctx, GameMode.ADVENTURE))).build();
+        commands.registrar().register(cmdGma);
+
+        LiteralCommandNode<CommandSourceStack> cmdGmp = Commands.literal("gmp")
+                .requires(sender -> sender.getSender().hasPermission("melon.gmp"))
+                .executes(ctx -> CmdGm.executeSelf(ctx, GameMode.SPECTATOR))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .executes(ctx -> CmdGm.executeOthers(ctx, GameMode.SPECTATOR))).build();
+        commands.registrar().register(cmdGmp);
 
     }
 }

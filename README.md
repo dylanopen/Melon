@@ -14,7 +14,7 @@
 - `/walkspeed` command - change the speed you or anyone else walks - or completely
   invert movement :)
 - `/fly` command - works even in survival
-- `/gms` command - switch gamemode to survival: individual permissions for giving 
+- `/gms`, `gmc`, `gma` and `gmp` commands - switch gamemode: individual permissions for giving 
   safer permissions than vanilla
 
 ## License

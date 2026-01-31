@@ -8,6 +8,8 @@ description: The ultimate essentials plugin for modern Minecraft servers
 website: https://dylancode.dev/melon
 
 permissions:
+  melon.reload:
+    default: op
   melon.fly:
     default: op
   melon.falldamage:
@@ -18,5 +20,9 @@ permissions:
     default: op
   melon.gms:
     default: op
-  melon.reload:
+  melon.gmc:
+    default: op
+  melon.gma:
+    default: op
+  melon.gmp:
     default: op

@@ -12,26 +12,26 @@ import java.util.List;
 
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
 
-public class CmdGms {
-    public static void setGamemodeSurvival(Player player) {
-        player.setGameMode(GameMode.SURVIVAL);
-        player.sendMessage(formatMessage("Set " + player.getName() + "'s gamemode to SURVIVAL"));
+public class CmdGm {
+    public static void setPlayerGamemode(Player player, GameMode gamemode) {
+        player.setGameMode(gamemode);
+        player.sendMessage(formatMessage("Set " + player.getName() + "'s gamemode to " + gamemode));
     }
 
-    public static int executeSelf(CommandContext<CommandSourceStack> ctx) {
+    public static int executeSelf(CommandContext<CommandSourceStack> ctx, GameMode gamemode) {
         if (!(ctx.getSource().getExecutor() instanceof Player player)) {
             ctx.getSource().getSender().sendMessage(formatMessage("Only players can run this command without arguments!"));
             return Command.SINGLE_SUCCESS;
         }
-        setGamemodeSurvival(player);
+        setPlayerGamemode(player, gamemode);
         return Command.SINGLE_SUCCESS;
     }
 
-    public static int executeOthers(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+    public static int executeOthers(CommandContext<CommandSourceStack> ctx, GameMode gamemode) throws CommandSyntaxException {
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("players", PlayerSelectorArgumentResolver.class);
         final List<Player> players = targetResolver.resolve(ctx.getSource());
         for (final Player player : players) {
-            setGamemodeSurvival(player);
+            setPlayerGamemode(player, gamemode);
         }
         return Command.SINGLE_SUCCESS;
     }
