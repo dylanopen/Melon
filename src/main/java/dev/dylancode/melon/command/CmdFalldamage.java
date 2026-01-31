@@ -7,6 +7,9 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import net.kyori.adventure.util.TriState;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
+
+import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
 
 public class CmdFalldamage {
@@ -17,10 +20,10 @@ public class CmdFalldamage {
         }
         if (player.hasFlyingFallDamage().equals(TriState.TRUE)) {
             player.setFlyingFallDamage(TriState.FALSE);
-            player.sendMessage(formatMessage(MessagesConfig.confirmFlyFallDamageDisable));
+            player.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.confirmFlyFallDamageDisable, new HashMap<>())));
         } else {
             player.setFlyingFallDamage(TriState.TRUE);
-            player.sendMessage(formatMessage(MessagesConfig.confirmFlyFallDamageEnable));
+            player.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.confirmFlyFallDamageEnable, new HashMap<>())));
         }
         return Command.SINGLE_SUCCESS;
     }
