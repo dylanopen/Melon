@@ -154,5 +154,13 @@ public class CommandRegistry {
                 .build();
         commands.registrar().register(cmdGetnick);
 
+        LiteralCommandNode<CommandSourceStack> cmdSetnick = Commands.literal("setnick")
+                .requires(sender -> sender.getSender().hasPermission("melon.setnick"))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .then(Commands.argument("nickname", StringArgumentType.greedyString())
+                                .executes(CmdSetnick::execute)))
+                .build();
+        commands.registrar().register(cmdSetnick);
+
     }
 }
