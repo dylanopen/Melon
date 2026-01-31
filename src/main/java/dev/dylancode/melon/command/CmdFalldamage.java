@@ -2,6 +2,7 @@ package dev.dylancode.melon.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
+import dev.dylancode.melon.config.MessagesConfig;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import net.kyori.adventure.util.TriState;
 import org.bukkit.entity.Player;
@@ -16,10 +17,10 @@ public class CmdFalldamage {
         }
         if (player.hasFlyingFallDamage().equals(TriState.TRUE)) {
             player.setFlyingFallDamage(TriState.FALSE);
-            player.sendMessage(formatMessage("Toggled flying fall damage OFF"));
+            player.sendMessage(formatMessage(MessagesConfig.confirmFlyFallDamageDisable));
         } else {
             player.setFlyingFallDamage(TriState.TRUE);
-            player.sendMessage(formatMessage("Toggled flying fall damage ON"));
+            player.sendMessage(formatMessage(MessagesConfig.confirmFlyFallDamageEnable));
         }
         return Command.SINGLE_SUCCESS;
     }

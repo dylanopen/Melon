@@ -6,6 +6,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.dylancode.melon.config.MessagesConfig;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
+import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -13,21 +14,27 @@ import java.util.List;
 import java.util.Map;
 
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
-import static net.kyori.adventure.text.minimessage.MiniMessage.miniMessage;
+import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
 
 public class CmdKick {
     public static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         String miniReason = ctx.getArgument("reason", String.class);
         String executor = ctx.getSource().getSender().getName();
-        String kickMessage = applyPlaceholders(MessagesConfig.kickMessage, new HashMap<>(Map.ofEntries(
-                Map.entry("executor", executor),
-                Map.entry("reason", miniReason)
-        )));
+
 
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("players", PlayerSelectorArgumentResolver.class);
         final List<Player> players = targetResolver.resolve(ctx.getSource());
         for (Player player : players) {
-            player.kick(miniMessage().deserialize(kickMessage));
+            HashMap<String, String> placeholders = new HashMap<>(Map.ofEntries(
+                    Map.entry("sender", executor),
+                    Map.entry("receiver", player.getName()),
+                    Map.entry("reason", miniReason)
+            ));
+            Component msgReceive = formatMessage(applyPlaceholders(MessagesConfig.receiveKick, placeholders));
+            Component msgConfirm = formatMessage(applyPlaceholders(MessagesConfig.confirmKick, placeholders));
+
+            player.kick(msgReceive);
+            ctx.getSource().getSender().sendMessage(msgConfirm);
         }
 
         return Command.SINGLE_SUCCESS;

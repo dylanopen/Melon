@@ -1,26 +1,69 @@
 package dev.dylancode.melon.config;
 
+import dev.dylancode.melon.melon.Melon;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
+import org.bukkit.configuration.file.YamlConfiguration;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.Objects;
+
+import static net.kyori.adventure.text.minimessage.MiniMessage.miniMessage;
 
 public class MessagesConfig {
-    public static TextColor melonColor = TextColor.fromHexString("#77cc44");
-    public static TextColor messageColor = TextColor.fromHexString("#e79708");
-    public static String kickMessage = "<%melon_color%>[Melon]<%message_color%> You have been kicked by <%melon_color%>%executor%\n\nReason:<%message_color%> %reason%";
-    public static String msgReceiveMessage = "<%melon_color%>[Melon]<%message_color%> Message from <%melon_color%>%sender%:<%message_color%> %message%";
+    public static TextColor primaryColor;
+    public static TextColor secondaryColor;
+    public static TextColor tertiaryColor;
+
+    public static String confirmKick;
+    public static String confirmMsg;
+    public static String confirmFlyFallDamageEnable;
+    public static String confirmFlyFallDamageDisable;
+    public static String confirmGamemode;
+    public static String confirmFlyspeed;
+    public static String confirmWalkspeed;
+    public static String confirmFlyEnable;
+    public static String confirmFlyDisable;
+
+    public static String receiveKick;
+    public static String receiveMsg;
 
     public static Component formatMessage(String message) {
-        return Component.text("[Melon] ", melonColor).append(Component.text(message, messageColor));
+        return miniMessage().deserialize(message);
     }
 
     public static String applyPlaceholders(String message, HashMap<String, String> placeholders) {
-        placeholders.put("melon_color", melonColor.asHexString());
-        placeholders.put("message_color", messageColor.asHexString());
+        message = "<%secondary%>" + message;
+        placeholders.put("primary", primaryColor.asHexString());
+        placeholders.put("secondary", secondaryColor.asHexString());
+        placeholders.put("tertiary", tertiaryColor.asHexString());
         for (String key : placeholders.keySet()) {
             message = message.replace("%"+key+"%", placeholders.get(key));
         }
         return message;
+    }
+
+    public static void load() {
+        if (!new File(Melon.plugin.getDataFolder(), "messages.yml").exists()) {
+            Melon.plugin.saveResource("messages.yml", false);
+        }
+        File file = new File(Melon.plugin.getDataFolder(), "messages.yml");
+        YamlConfiguration yaml = YamlConfiguration.loadConfiguration(file);
+
+        primaryColor = TextColor.fromHexString(Objects.requireNonNull(yaml.getString("color.primary")));
+        secondaryColor = TextColor.fromHexString(Objects.requireNonNull(yaml.getString("color.secondary")));
+        tertiaryColor = TextColor.fromHexString(Objects.requireNonNull(yaml.getString("color.tertiary")));
+        confirmKick = yaml.getString("confirm.kick");
+        confirmMsg = yaml.getString("confirm.msg");
+        confirmFlyFallDamageEnable = yaml.getString("confirm.fly-fall-damage-enable");
+        confirmFlyFallDamageDisable = yaml.getString("confirm.fly-fall-damage-disable");
+        receiveKick = yaml.getString("receive.kick");
+        receiveMsg = yaml.getString("receive.msg");
+        confirmGamemode = yaml.getString("confirm.gamemode");
+        confirmFlyspeed = yaml.getString("confirm.flyspeed");
+        confirmWalkspeed = yaml.getString("confirm.walkspeed");
+        confirmFlyEnable = yaml.getString("confirm.fly-enable");
+        confirmFlyDisable = yaml.getString("confirm.fly-disable");
     }
 }

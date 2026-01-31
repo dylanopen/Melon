@@ -3,6 +3,7 @@ package dev.dylancode.melon.melon;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
+import dev.dylancode.melon.config.MessagesConfig;
 import dev.dylancode.melon.config.MotdConfig;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
@@ -22,6 +23,7 @@ public class MelonReload {
 
     public static void reload() {
         MotdConfig.load();
+        MessagesConfig.load();
     }
 
     private static int execute(CommandContext<CommandSourceStack> ctx) {

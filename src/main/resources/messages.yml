@@ -1,0 +1,20 @@
+color:
+  primary: "#dddddd"
+  secondary: "#e79708"
+  tertiary: "#77cc44"
+
+confirm:
+  msg: "<%tertiary%>%sender% -> <%tertiary%>%receiver% <%secondary%>%message%"
+  kick: "<%secondary%>Kicked player(s) <%tertiary%>%players% <%secondary%> for <%primary%> %reason%"
+  fly-fall-damage-enable: "Toggled flying fall damage <%tertiary%>ON"
+  fly-fall-damage-disable: "Toggled flying fall damage <%tertiary%>OFF"
+  gamemode: "Set <%tertiary%>%receiver%'s<%secondary%> gamemode to <%tertiary%>%gamemode%"
+  flyspeed: "Set your fly speed to <%tertiary%>%speed%%"
+  walkspeed: "Set your walk speed to <%tertiary%>%speed%%"
+  fly-enable: "You can now fly!"
+  fly-disable: "You can no longer fly :("
+
+receive:
+  msg: "<%tertiary%>%sender% -> <%tertiary%>%receiver% <%secondary%>%message%"
+  kick: "<%secondary%>You have been kicked by <%tertiary%>%sender%<newline><newline><%secondary%>Reason:<%tertiary%> %reason%"
+

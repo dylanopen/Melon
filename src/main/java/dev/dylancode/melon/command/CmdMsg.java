@@ -20,16 +20,19 @@ public class CmdMsg {
     public static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         String rawMessage = ctx.getArgument("message", String.class);
         String executor = ctx.getSource().getSender().getName();
-        String rawReceivedMessage = applyPlaceholders(MessagesConfig.msgReceiveMessage, new HashMap<>(Map.ofEntries(
-                Map.entry("sender", executor),
-                Map.entry("message", rawMessage)
-        )));
-        Component receivedMessage = miniMessage().deserialize(rawReceivedMessage);
 
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("player", PlayerSelectorArgumentResolver.class);
         final List<Player> players = targetResolver.resolve(ctx.getSource());
         for (Player player : players) {
-            player.sendMessage(receivedMessage);
+            HashMap<String, String> placeholders = new HashMap<>(Map.ofEntries(
+                    Map.entry("sender", executor),
+                    Map.entry("receiver", player.getName()),
+                    Map.entry("message", rawMessage)
+            ));
+            Component receiveMessage = miniMessage().deserialize(applyPlaceholders(MessagesConfig.receiveMsg, placeholders));
+            Component confirmMessage = miniMessage().deserialize(applyPlaceholders(MessagesConfig.confirmMsg, placeholders));
+            ctx.getSource().getSender().sendMessage(confirmMessage);
+            player.sendMessage(receiveMessage);
         }
 
         return Command.SINGLE_SUCCESS;
