@@ -155,5 +155,11 @@ public class CommandRegistry {
                                 .executes(CmdSetprefix::execute)))
                 .build());
 
+        r.register(Commands.literal("getsuffix")
+                .requires(sender -> sender.getSender().hasPermission("melon.getsuffix"))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .executes(CmdGetsuffix::execute))
+                .build());
+
     }
 }

@@ -54,6 +54,10 @@ permissions:
     default: true
   melon.setprefix:
     default: op
+  melon.getsuffix:
+    default: true
+  melon.setsuffix:
+    default: op
   melon.msg:
     default: true
   melon.uuid:

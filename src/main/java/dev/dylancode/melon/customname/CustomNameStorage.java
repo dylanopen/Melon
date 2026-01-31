@@ -30,6 +30,14 @@ public class CustomNameStorage {
         return customName.nickname;
     }
 
+    public static String getSuffix(UUID uuid) {
+        if (!customNames.containsKey(uuid)) {
+            insertEmpty(uuid);
+        }
+        CustomName customName = customNames.get(uuid);
+        return customName.suffix;
+    }
+
     public static void setNick(UUID uuid, String nickname) {
         if (!customNames.containsKey(uuid)) {
             insertEmpty(uuid);
