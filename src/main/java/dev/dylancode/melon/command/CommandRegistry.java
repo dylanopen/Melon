@@ -7,7 +7,6 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
 import io.papermc.paper.plugin.lifecycle.event.registrar.ReloadableRegistrarEvent;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.GameMode;
 import org.jetbrains.annotations.NotNull;
 
@@ -78,6 +77,14 @@ public class CommandRegistry {
                                 .executes(CmdKick::execute)))
                 .build();
         commands.registrar().register(cmdKick);
+
+        LiteralCommandNode<CommandSourceStack> cmdMsg = Commands.literal("msg")
+                .requires(sender -> sender.getSender().hasPermission("melon.msg"))
+                .then(Commands.argument("player", ArgumentTypes.players())
+                        .then(Commands.argument("message", StringArgumentType.greedyString())
+                                .executes(CmdMsg::execute)))
+                .build();
+        commands.registrar().register(cmdMsg);
 
     }
 }

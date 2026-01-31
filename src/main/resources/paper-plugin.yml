@@ -26,3 +26,7 @@ permissions:
     default: op
   melon.gmp:
     default: op
+  melon.kick:
+    default: op
+  melon.msg:
+    default: op
