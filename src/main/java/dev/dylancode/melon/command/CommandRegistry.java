@@ -142,6 +142,12 @@ public class CommandRegistry {
                                 .executes(CmdSetnick::execute)))
                 .build());
 
+        r.register(Commands.literal("getprefix")
+                .requires(sender -> sender.getSender().hasPermission("melon.getprefix"))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .executes(CmdGetprefix::execute))
+                .build());
+
         r.register(Commands.literal("setprefix")
                 .requires(sender -> sender.getSender().hasPermission("melon.setprefix"))
                 .then(Commands.argument("players", ArgumentTypes.players())

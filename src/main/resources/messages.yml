@@ -30,4 +30,5 @@ query:
   uuid: "UUID of %receiver% is <%tertiary%>%uuid%"
   health: "%receiver% is at <%tertiary%>%hp% HP"
   maxhealth: "%receiver% has a maximum health (health 'scale') of <%tertiary%>%hp% HP"
-  getnick: "%receiver%'s nickname is <%tertiary%>%nickname%"
+  getnick: "%receiver%'s nickname is <reset>%nickname%"
+  getprefix: "%receiver%'s prefix is <reset>%prefix%"

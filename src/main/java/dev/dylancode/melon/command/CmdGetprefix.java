@@ -13,19 +13,19 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
-import static net.kyori.adventure.text.minimessage.MiniMessage.miniMessage;
 
-public class CmdGetnick {
+public class CmdGetprefix {
     public static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         CommandSender sender = ctx.getSource().getSender();
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("players", PlayerSelectorArgumentResolver.class);
         final List<Player> players = targetResolver.resolve(ctx.getSource());
         for (Player player : players) {
             HashMap<String, String> placeholders = getPlaceholders(ctx, player);
-            sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.queryGetnick, placeholders)));
+            sender.sendMessage(formatMessage(applyPlaceholders(Objects.requireNonNull(MessagesConfig.queryGetprefix), placeholders)));
         }
         return Command.SINGLE_SUCCESS;
     }
@@ -34,7 +34,7 @@ public class CmdGetnick {
         HashMap<String, String> placeholders = new HashMap<>();
         placeholders.put("sender", ctx.getSource().getSender().getName());
         placeholders.put("receiver", player.getName());
-        placeholders.put("nickname", CustomNameStorage.getNick(player.getUniqueId()));
+        placeholders.put("prefix", CustomNameStorage.getPrefix(player.getUniqueId()));
         return placeholders;
     }
 }

@@ -50,6 +50,10 @@ permissions:
     default: true
   melon.setnick:
     default: op
+  melon.getprefix:
+    default: true
+  melon.setprefix:
+    default: op
   melon.msg:
     default: true
   melon.uuid:

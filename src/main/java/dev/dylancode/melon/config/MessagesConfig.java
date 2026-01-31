@@ -41,6 +41,7 @@ public class MessagesConfig {
     public static String queryHealth;
     public static String queryMaxhealth;
     public static String queryGetnick;
+    public static String queryGetprefix;
 
     public static Component formatMessage(String message) {
         return miniMessage().deserialize(message);
@@ -90,5 +91,6 @@ public class MessagesConfig {
         queryHealth = yaml.getString("query.health");
         queryMaxhealth = yaml.getString("query.maxhealth");
         queryGetnick = yaml.getString("query.getnick");
+        queryGetprefix = yaml.getString("query.getprefix");
     }
 }

@@ -14,6 +14,14 @@ import java.util.UUID;
 public class CustomNameStorage {
     public static HashMap<UUID, CustomName> customNames = new HashMap<>();
 
+    public static String getPrefix(UUID uuid) {
+        if (!customNames.containsKey(uuid)) {
+            insertEmpty(uuid);
+        }
+        CustomName customName = customNames.get(uuid);
+        return customName.prefix;
+    }
+
     public static String getNick(UUID uuid) {
         if (!customNames.containsKey(uuid)) {
             insertEmpty(uuid);
