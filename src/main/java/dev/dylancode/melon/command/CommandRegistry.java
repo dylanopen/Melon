@@ -1,5 +1,6 @@
 package dev.dylancode.melon.command;
 
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -102,7 +103,7 @@ public class CommandRegistry {
         commands.registrar().register(cmdIpaddress);
 
         LiteralCommandNode<CommandSourceStack> cmdRenderdistance = Commands.literal("renderdistance")
-                .requires(sender -> sender.getSender().hasPermission("melon.renderdistance"))
+                .requires(sender -> sender.getSender().hasPermission("melon.renderdistance.get"))
                 .then(Commands.argument("players", ArgumentTypes.player())
                         .executes(CmdRenderdistanceGet::execute)
                         .then(Commands.argument("distance", IntegerArgumentType.integer(2, 32))
@@ -125,5 +126,16 @@ public class CommandRegistry {
                                 .executes(CmdSayas::execute)))
                 .build();
         commands.registrar().register(cmdSayas);
+
+        LiteralCommandNode<CommandSourceStack> cmdHealth = Commands.literal("health")
+                .requires(sender -> sender.getSender().hasPermission("melon.health.get"))
+                .then(Commands.argument("players", ArgumentTypes.player())
+                        .executes(CmdHealthGet::execute)
+                        .then(Commands.argument("hp", DoubleArgumentType.doubleArg(0.0f))
+                                .requires(sender -> sender.getSender().hasPermission("melon.health.set"))
+                                .executes(CmdHealthSet::execute)))
+                .build();
+        commands.registrar().register(cmdHealth);
+
     }
 }

@@ -14,6 +14,7 @@ confirm:
   fly-enable: "You can now fly!"
   fly-disable: "You can no longer fly :("
   render-distance: "Set server view distance for <%tertiary%>%receiver%<%secondary%> to <%tertiary%>%view-distance%"
+  health: "Set health of <%tertiary%>%receiver%<%secondary%> to <%tertiary%>%hp% HP"
 
 receive:
   msg: "<%tertiary%>%sender% -> <%tertiary%>%receiver% <%secondary%>%message%"
@@ -24,3 +25,4 @@ query:
   client-brand: "%receiver%'s client is self-identified as <%tertiary%>%brand%"
   render-distance: "Render distance for <%tertiary%>%receiver%<%secondary%>:<newline>- Client requested <%tertiary%>%client-view%<%secondary%> chunks<newline>- The max server view distance for %receiver% is <%tertiary%>%server-view%<%secondary%><newline>- The server actually sent <%tertiary%>%server-sent%<%secondary%> chunks<newline>- <%tertiary%>%actual-rendered%<%secondary%> chunks will actually be rendered"
   uuid: "UUID of %receiver% is <%tertiary%>%uuid%"
+  health: "%receiver% is at <%tertiary%>%hp% HP"

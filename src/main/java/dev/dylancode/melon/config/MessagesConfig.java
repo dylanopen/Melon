@@ -26,6 +26,7 @@ public class MessagesConfig {
     public static String confirmFlyEnable;
     public static String confirmFlyDisable;
     public static String confirmRenderdistance;
+    public static String confirmHealth;
 
     public static String receiveKick;
     public static String receiveMsg;
@@ -34,6 +35,7 @@ public class MessagesConfig {
     public static String queryClientbrand;
     public static String queryRenderdistance;
     public static String queryUuid;
+    public static String queryHealth;
 
     public static Component formatMessage(String message) {
         return miniMessage().deserialize(message);
@@ -72,9 +74,11 @@ public class MessagesConfig {
         confirmFlyEnable = yaml.getString("confirm.fly-enable");
         confirmFlyDisable = yaml.getString("confirm.fly-disable");
         confirmRenderdistance = yaml.getString("confirm.render-distance");
+        confirmHealth = yaml.getString("confirm.health");
         queryIpaddress = yaml.getString("query.ip-address");
         queryClientbrand = yaml.getString("query.client-brand");
         queryRenderdistance = yaml.getString("query.render-distance");
         queryUuid = yaml.getString("query.uuid");
+        queryHealth = yaml.getString("query.health");
     }
 }
