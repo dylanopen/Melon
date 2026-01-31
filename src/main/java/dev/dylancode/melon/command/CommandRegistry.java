@@ -14,6 +14,11 @@ public class CommandRegistry {
                 .executes(CmdFly::execute).build();
         commands.registrar().register(cmdFly);
 
+        LiteralCommandNode<CommandSourceStack> cmdFalldamage = Commands.literal("mfalldamage")
+                .requires(sender -> sender.getSender().hasPermission("melon.falldamage"))
+                .executes(CmdFalldamage::execute).build();
+        commands.registrar().register(cmdFalldamage);
+
         LiteralCommandNode<CommandSourceStack> cmdFlyspeed = Commands.literal("mflyspeed").then(
                 Commands.argument("speed percentage", FloatArgumentType.floatArg(CmdFlyspeed.MIN_FLYSPEED, CmdFlyspeed.MAX_FLYSPEED))
                         .requires(sender -> sender.getSender().hasPermission("melon.flyspeed"))

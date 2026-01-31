@@ -12,6 +12,10 @@ commands:
     description: "Enable or disable the 'double tap space to fly' ability: even in survival"
     usage: "/mfly"
     permission: melon.fly
+  mfalldamage:
+    description: "Enable or disable fall damage when a player has the flight ability - see /mfly"
+    usage: "/mfalldamage"
+    permission: melon.falldamage
   mflyspeed:
     description: "Set the flight speed, where 0% is no movement and 100% is very fast"
     usage: "/mflyspeed <speed percentage>"
@@ -23,6 +27,8 @@ commands:
 
 permissions:
   melon.fly:
+    default: op
+  melon.falldamage:
     default: op
   melon.flyspeed:
     default: op
