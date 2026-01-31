@@ -110,5 +110,12 @@ public class CommandRegistry {
                         .executes(CmdRenderdistanceSet::execute)))
                 .build();
         commands.registrar().register(cmdRenderdistance);
+
+        LiteralCommandNode<CommandSourceStack> cmdUuid = Commands.literal("uuid")
+                .requires(sender -> sender.getSender().hasPermission("melon.uuid"))
+                .then(Commands.argument("players", ArgumentTypes.player())
+                        .executes(CmdUuid::execute))
+                .build();
+        commands.registrar().register(cmdUuid);
     }
 }

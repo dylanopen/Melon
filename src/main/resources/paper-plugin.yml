@@ -28,8 +28,6 @@ permissions:
     default: op
   melon.kick:
     default: op
-  melon.msg:
-    default: op
   melon.ipaddress:
     default: op
   melon.clientbrand:
@@ -38,3 +36,7 @@ permissions:
     default: op
   melon.renderdistance.set:
     default: op
+  melon.msg:
+    default: true
+  melon.uuid:
+    default: true

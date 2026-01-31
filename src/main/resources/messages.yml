@@ -23,3 +23,4 @@ query:
   ipaddress: "%receiver%'s IP address is <%tertiary%>%ip%"
   client-brand: "%receiver%'s client is self-identified as <%tertiary%>%brand%"
   render-distance: "Render distance for <%tertiary%>%receiver%<%secondary%>:<newline>- Client requested <%tertiary%>%client-view%<%secondary%> chunks<newline>- The max server view distance for %receiver% is <%tertiary%>%server-view%<%secondary%><newline>- The server actually sent <%tertiary%>%server-sent%<%secondary%> chunks<newline>- <%tertiary%>%actual-rendered%<%secondary%> chunks will actually be rendered"
+  uuid: "UUID of %receiver% is <%tertiary%>%uuid%"

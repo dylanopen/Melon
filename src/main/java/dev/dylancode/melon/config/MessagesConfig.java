@@ -33,6 +33,7 @@ public class MessagesConfig {
     public static String queryIpaddress;
     public static String queryClientbrand;
     public static String queryRenderdistance;
+    public static String queryUuid;
 
     public static Component formatMessage(String message) {
         return miniMessage().deserialize(message);
@@ -74,5 +75,6 @@ public class MessagesConfig {
         queryIpaddress = yaml.getString("query.ip-address");
         queryClientbrand = yaml.getString("query.client-brand");
         queryRenderdistance = yaml.getString("query.render-distance");
+        queryUuid = yaml.getString("query.uuid");
     }
 }
