@@ -25,7 +25,7 @@ public class CmdIpaddress {
             placeholders.put("sender", ctx.getSource().getSender().getName());
             placeholders.put("receiver", player.getName());
             placeholders.put("ip", player.getAddress().getHostName());
-            sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.ipAddress, placeholders)));
+            sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.queryIpaddress, placeholders)));
         }
         return Command.SINGLE_SUCCESS;
     }

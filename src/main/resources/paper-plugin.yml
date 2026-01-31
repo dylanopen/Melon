@@ -34,3 +34,7 @@ permissions:
     default: op
   melon.clientbrand:
     default: op
+  melon.renderdistance:
+    default: op
+  melon.renderdistance.set:
+    default: op

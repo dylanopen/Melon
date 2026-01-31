@@ -8,6 +8,7 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,18 +16,27 @@ import java.util.List;
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
 
-public class CmdClientbrand {
+public class CmdRenderdistanceGet {
     public static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         CommandSender sender = ctx.getSource().getSender();
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("players", PlayerSelectorArgumentResolver.class);
         final List<Player> players = targetResolver.resolve(ctx.getSource());
         for (Player player : players) {
-            HashMap<String, String> placeholders = new HashMap<>();
-            placeholders.put("sender", ctx.getSource().getSender().getName());
-            placeholders.put("receiver", player.getName());
-            placeholders.put("brand", player.getClientBrandName());
-            sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.queryClientbrand, placeholders)));
+            HashMap<String, String> placeholders = getPlaceholders(ctx, player);
+            sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.queryRenderdistance, placeholders)));
         }
         return Command.SINGLE_SUCCESS;
+    }
+
+    private static @NotNull HashMap<String, String> getPlaceholders(CommandContext<CommandSourceStack> ctx, Player player) {
+        int actualRendered = Math.min(player.getClientViewDistance(), player.getViewDistance());
+        HashMap<String, String> placeholders = new HashMap<>();
+        placeholders.put("sender", ctx.getSource().getSender().getName());
+        placeholders.put("receiver", player.getName());
+        placeholders.put("client-view", String.valueOf(player.getClientViewDistance()));
+        placeholders.put("server-view", String.valueOf(player.getViewDistance()));
+        placeholders.put("server-sent", String.valueOf(player.getSendViewDistance()));
+        placeholders.put("actual-rendered", String.valueOf(actualRendered));
+        return placeholders;
     }
 }

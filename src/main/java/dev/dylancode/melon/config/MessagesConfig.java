@@ -25,12 +25,14 @@ public class MessagesConfig {
     public static String confirmWalkspeed;
     public static String confirmFlyEnable;
     public static String confirmFlyDisable;
+    public static String confirmRenderdistance;
 
     public static String receiveKick;
     public static String receiveMsg;
 
-    public static String ipAddress;
-    public static String clientBrand;
+    public static String queryIpaddress;
+    public static String queryClientbrand;
+    public static String queryRenderdistance;
 
     public static Component formatMessage(String message) {
         return miniMessage().deserialize(message);
@@ -68,7 +70,9 @@ public class MessagesConfig {
         confirmWalkspeed = yaml.getString("confirm.walkspeed");
         confirmFlyEnable = yaml.getString("confirm.fly-enable");
         confirmFlyDisable = yaml.getString("confirm.fly-disable");
-        ipAddress = yaml.getString("ip-address");
-        clientBrand = yaml.getString("client-brand");
+        confirmRenderdistance = yaml.getString("confirm.render-distance");
+        queryIpaddress = yaml.getString("query.ip-address");
+        queryClientbrand = yaml.getString("query.client-brand");
+        queryRenderdistance = yaml.getString("query.render-distance");
     }
 }

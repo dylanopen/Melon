@@ -1,6 +1,7 @@
 package dev.dylancode.melon.command;
 
 import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
@@ -99,5 +100,15 @@ public class CommandRegistry {
                         .executes(CmdIpaddress::execute))
                 .build();
         commands.registrar().register(cmdIpaddress);
+
+        LiteralCommandNode<CommandSourceStack> cmdRenderdistance = Commands.literal("renderdistance")
+                .requires(sender -> sender.getSender().hasPermission("melon.renderdistance"))
+                .then(Commands.argument("players", ArgumentTypes.player())
+                        .executes(CmdRenderdistanceGet::execute)
+                .then(Commands.argument("distance", IntegerArgumentType.integer(2, 32))
+                        .requires(sender -> sender.getSender().hasPermission("melon.renderdistance.set"))
+                        .executes(CmdRenderdistanceSet::execute)))
+                .build();
+        commands.registrar().register(cmdRenderdistance);
     }
 }
