@@ -18,3 +18,5 @@ permissions:
     default: op
   melon.gms:
     default: op
+  melon.reload:
+    default: op

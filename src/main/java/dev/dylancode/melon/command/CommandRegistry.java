@@ -20,15 +20,15 @@ public class CommandRegistry {
                 .executes(CmdFalldamage::execute).build();
         commands.registrar().register(cmdFalldamage);
 
-        LiteralCommandNode<CommandSourceStack> cmdFlyspeed = Commands.literal("flyspeed").then(
+        LiteralCommandNode<CommandSourceStack> cmdFlyspeed = Commands.literal("flyspeed")
+                .requires(sender -> sender.getSender().hasPermission("melon.flyspeed")).then(
                 Commands.argument("speed percentage", FloatArgumentType.floatArg(CmdFlyspeed.MIN_FLYSPEED, CmdFlyspeed.MAX_FLYSPEED))
-                        .requires(sender -> sender.getSender().hasPermission("melon.flyspeed"))
                         .executes(CmdFlyspeed::execute)).build();
         commands.registrar().register(cmdFlyspeed);
 
-        LiteralCommandNode<CommandSourceStack> cmdWalkspeed = Commands.literal("walkspeed").then(
+        LiteralCommandNode<CommandSourceStack> cmdWalkspeed = Commands.literal("walkspeed")
+                .requires(sender -> sender.getSender().hasPermission("melon.walkspeed")).then(
                 Commands.argument("speed percentage", FloatArgumentType.floatArg(CmdWalkspeed.MIN_WALKSPEED, CmdWalkspeed.MAX_WALKSPEED))
-                        .requires(sender -> sender.getSender().hasPermission("melon.walkspeed"))
                         .executes(CmdWalkspeed::execute)).build();
         commands.registrar().register(cmdWalkspeed);
 
