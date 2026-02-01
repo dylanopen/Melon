@@ -52,6 +52,8 @@ public class MessagesConfig {
     public static String queryMaxplayers;
     public static String querySimulationdistance;
     public static String queryViewdistance;
+    public static String queryOnlinemodeTrue;
+    public static String queryOnlinemodeFalse;
 
     public static String listPlayer;
 
@@ -114,6 +116,8 @@ public class MessagesConfig {
         queryMaxplayers = yaml.getString("query.maxplayers");
         querySimulationdistance = yaml.getString("query.simulation-distance");
         queryViewdistance = yaml.getString("query.view-distance");
+        queryOnlinemodeTrue = yaml.getString("query.onlinemode-true");
+        queryOnlinemodeFalse = yaml.getString("query.onlinemode-false");
         listPlayer = yaml.getString("list-player");
     }
 }

@@ -230,5 +230,10 @@ public class CommandRegistry {
                                 .requires(sender -> sender.getSender().hasPermission("melon.viewdistance.set"))
                                 .executes(CmdViewdistanceSet::execute)))
                 .build());
+
+        r.register(Commands.literal("onlinemode")
+                .requires(sender -> sender.getSender().hasPermission("melon.onlinemode"))
+                .executes(CmdOnlinemode::execute)
+                .build());
     }
 }

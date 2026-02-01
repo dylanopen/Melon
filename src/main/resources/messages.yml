@@ -42,5 +42,7 @@ query:
   render-distance: "Render distance for <%tertiary%>%receiver%<%secondary%>:<newline>- Client requested <%tertiary%>%client-view%<%secondary%> chunks<newline>- The view distance of '%world-name%' is <%tertiary%>%world-view%<%secondary%><newline>- The max server view distance for %receiver% is <%tertiary%>%server-view%<%secondary%><newline>- The server actually sent <%tertiary%>%server-sent%<%secondary%> chunks<newline>- <%tertiary%>%actual-rendered% chunks will actually be rendered"
   view-distance: "The view distance for world '<%tertiary%>%world%<%secondary%>' is <%tertiary%>%distance%<%secondary%> chunks"
   simulation-distance: "The simulation distance for world '<%tertiary%>%world%<%secondary%>' is <%tertiary%>%distance%<%secondary%> chunks"
+  onlinemode-true: "The server is running in <%tertiary%>online mode<%secondary%> (Mojang account authentication enabled, 'not cracked')"
+  onlinemode-false: "The server is running in <%tertiary%>offline mode<%secondary%> (Mojang account authentication disabled, 'cracked')"
 
 list-player: "<newline>- %player-name%"

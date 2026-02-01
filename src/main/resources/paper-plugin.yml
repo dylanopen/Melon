@@ -84,3 +84,5 @@ permissions:
     default: true
   melon.viewdistance.set:
     default: op
+  melon.onlinemode:
+    default: true
