@@ -66,5 +66,7 @@ permissions:
     default: op
   melon.clearslot:
     default: op
+  melon.cleararmor:
+    default: op
   melon.clearhotbar:
     default: op
