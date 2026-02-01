@@ -181,5 +181,11 @@ public class CommandRegistry {
                         .then(Commands.argument("slot", IntegerArgumentType.integer(0, 44))
                                 .executes(CmdClearslot::execute)))
                 .build());
+
+        r.register(Commands.literal("clearhotbar")
+                .requires(sender -> sender.getSender().hasPermission("melon.clearhotbar"))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                                .executes(CmdClearhotbar::execute))
+                .build());
     }
 }
