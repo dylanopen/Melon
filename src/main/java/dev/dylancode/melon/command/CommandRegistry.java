@@ -7,6 +7,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
 import io.papermc.paper.plugin.lifecycle.event.registrar.ReloadableRegistrarEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.jetbrains.annotations.NotNull;
 
@@ -210,6 +211,15 @@ public class CommandRegistry {
                 .then(Commands.argument("player-limit", IntegerArgumentType.integer(0))
                         .requires(sender -> sender.getSender().hasPermission("melon.maxplayers.set"))
                         .executes(CmdMaxplayersSet::execute))
+                .build());
+
+        r.register(Commands.literal("simulationdistance")
+                .requires(sender -> sender.getSender().hasPermission("melon.simulationdistance.get"))
+                .then(Commands.argument("world", ArgumentTypes.world())
+                        .executes(CmdSimulationdistanceGet::execute)
+                        .then(Commands.argument("distance", IntegerArgumentType.integer(2, 32))
+                                .requires(sender -> sender.getSender().hasPermission("melon.simulationdistance.set"))
+                                .executes(CmdSimulationdistanceSet::execute)))
                 .build());
     }
 }

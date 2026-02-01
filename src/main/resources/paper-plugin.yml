@@ -76,3 +76,7 @@ permissions:
     default: true
   melon.maxplayers.set:
     default: op
+  melon.simulationdistance.get:
+    default: true
+  melon.simulationdistance.set:
+    default: op

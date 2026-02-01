@@ -21,6 +21,7 @@ confirm:
   setsuffix: "Set <%tertiary%>%receiver%'s<%secondary%> suffix to <reset>%suffix%"
   clear: "Cleared %items-removed% items from <%tertiary%>%receiver%'s<%secondary%> inventory<newline>Use <%tertiary%>/undoclear %receiver%<%secondary%> to restore the items"
   maxplayers: "Changed the player limit from %old-max-players% to <%tertiary%>%max-players%<%secondary%> players"
+  simulation-distance: "Set the simulation distance for world '<%tertiary%>%world%<%secondary%>' to <%tertiary%>%distance%<%secondary%> chunks"
 
 receive:
   msg: "<%tertiary%>%sender% -> <%tertiary%>%receiver% <%secondary%>%message%"
@@ -38,5 +39,6 @@ query:
   getsuffix: "%receiver%'s suffix is <reset>%suffix%"
   list: "<%tertiary%>%player-count% online players (max %max-player-count%)<%secondary%>%player-list%"
   maxplayers: "The player limit is currently set to <%tertiary%>%max-players%<%secondary%> players"
+  simulation-distance: "The simulation distance for world '<%tertiary%>%world%<%secondary%>' is <%tertiary%>%distance%<%secondary%> chunks"
 
 list-player: "<newline>- %player-name%"
