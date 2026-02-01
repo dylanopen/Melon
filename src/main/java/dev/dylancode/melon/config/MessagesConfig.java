@@ -32,6 +32,7 @@ public class MessagesConfig {
     public static String confirmSetprefix;
     public static String confirmSetsuffix;
     public static String confirmClear;
+    public static String confirmMaxplayers;
 
     public static String receiveKick;
     public static String receiveMsg;
@@ -46,6 +47,7 @@ public class MessagesConfig {
     public static String queryGetprefix;
     public static String queryGetsuffix;
     public static String queryList;
+    public static String queryMaxplayers;
 
     public static String listPlayer;
 
@@ -92,6 +94,7 @@ public class MessagesConfig {
         confirmSetprefix = yaml.getString("confirm.setprefix");
         confirmSetsuffix = yaml.getString("confirm.setsuffix");
         confirmClear = yaml.getString("confirm.clear");
+        confirmMaxplayers = yaml.getString("confirm.maxplayers");
         queryIpaddress = yaml.getString("query.ip-address");
         queryClientbrand = yaml.getString("query.client-brand");
         queryRenderdistance = yaml.getString("query.render-distance");
@@ -102,6 +105,7 @@ public class MessagesConfig {
         queryGetprefix = yaml.getString("query.getprefix");
         queryGetsuffix = yaml.getString("query.getsuffix");
         queryList = yaml.getString("query.list");
+        queryMaxplayers = yaml.getString("query.maxplayers");
         listPlayer = yaml.getString("list-player");
     }
 }

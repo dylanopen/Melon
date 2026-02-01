@@ -203,5 +203,13 @@ public class CommandRegistry {
                 .requires(sender -> sender.getSender().hasPermission("melon.list"))
                 .executes(CmdList::execute)
                 .build());
+
+        r.register(Commands.literal("maxplayers")
+                .requires(sender -> sender.getSender().hasPermission("melon.maxplayers.get"))
+                .executes(CmdMaxplayersGet::execute)
+                .then(Commands.argument("player-limit", IntegerArgumentType.integer(0))
+                        .requires(sender -> sender.getSender().hasPermission("melon.maxplayers.set"))
+                        .executes(CmdMaxplayersSet::execute))
+                .build());
     }
 }

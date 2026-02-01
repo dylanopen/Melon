@@ -72,3 +72,7 @@ permissions:
     default: op
   melon.list:
     default: true
+  melon.maxplayers.get:
+    default: true
+  melon.maxplayers.set:
+    default: op

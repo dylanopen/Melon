@@ -20,6 +20,7 @@ confirm:
   setprefix: "Set <%tertiary%>%receiver%'s<%secondary%> prefix to <reset>%prefix%"
   setsuffix: "Set <%tertiary%>%receiver%'s<%secondary%> suffix to <reset>%suffix%"
   clear: "Cleared %items-removed% items from <%tertiary%>%receiver%'s<%secondary%> inventory<newline>Use <%tertiary%>/undoclear %receiver%<%secondary%> to restore the items"
+  maxplayers: "Changed the player limit from %old-max-players% to <%tertiary%>%max-players%<%secondary%> players"
 
 receive:
   msg: "<%tertiary%>%sender% -> <%tertiary%>%receiver% <%secondary%>%message%"
@@ -35,6 +36,7 @@ query:
   getnick: "%receiver%'s nickname is <reset>%nickname%"
   getprefix: "%receiver%'s prefix is <reset>%prefix%"
   getsuffix: "%receiver%'s suffix is <reset>%suffix%"
-  list: "Online players:%player-list%"
+  list: "<%tertiary%>%player-count% online players (max %max-player-count%)<%secondary%>%player-list%"
+  maxplayers: "The player limit is currently set to <%tertiary%>%max-players%<%secondary%> players"
 
 list-player: "<newline>- %player-name%"
