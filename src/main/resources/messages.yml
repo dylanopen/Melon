@@ -13,7 +13,6 @@ confirm:
   walkspeed: "Set your walk speed to <%tertiary%>%speed%%"
   fly-enable: "You can now fly!"
   fly-disable: "You can no longer fly :("
-  render-distance: "Set server view distance for <%tertiary%>%receiver%<%secondary%> to <%tertiary%>%view-distance%"
   health: "Set health of <%tertiary%>%receiver%<%secondary%> to <%tertiary%>%hp% HP"
   maxhealth: "Set max health of <%tertiary%>%receiver%<%secondary%> to <%tertiary%>%hp% HP"
   setnick: "Set <%tertiary%>%receiver%'s<%secondary%> nickname to <reset>%nickname%"
@@ -21,6 +20,8 @@ confirm:
   setsuffix: "Set <%tertiary%>%receiver%'s<%secondary%> suffix to <reset>%suffix%"
   clear: "Cleared %items-removed% items from <%tertiary%>%receiver%'s<%secondary%> inventory<newline>Use <%tertiary%>/undoclear %receiver%<%secondary%> to restore the items"
   maxplayers: "Changed the player limit from %old-max-players% to <%tertiary%>%max-players%<%secondary%> players"
+  render-distance: "Set server view distance for <%tertiary%>%receiver%<%secondary%> to <%tertiary%>%view-distance%"
+  view-distance: "Set the view distance for world '<%tertiary%>%world%<%secondary%>' to <%tertiary%>%distance%<%secondary%> chunks"
   simulation-distance: "Set the simulation distance for world '<%tertiary%>%world%<%secondary%>' to <%tertiary%>%distance%<%secondary%> chunks"
 
 receive:
@@ -30,7 +31,6 @@ receive:
 query:
   ipaddress: "%receiver%'s IP address is <%tertiary%>%ip%"
   client-brand: "%receiver%'s client is self-identified as <%tertiary%>%brand%"
-  render-distance: "Render distance for <%tertiary%>%receiver%<%secondary%>:<newline>- Client requested <%tertiary%>%client-view%<%secondary%> chunks<newline>- The max server view distance for %receiver% is <%tertiary%>%server-view%<%secondary%><newline>- The server actually sent <%tertiary%>%server-sent%<%secondary%> chunks<newline>- <%tertiary%>%actual-rendered%<%secondary%> chunks will actually be rendered"
   uuid: "UUID of %receiver% is <%tertiary%>%uuid%"
   health: "%receiver% is at <%tertiary%>%hp% HP"
   maxhealth: "%receiver% has a maximum health (health 'scale') of <%tertiary%>%hp% HP"
@@ -39,6 +39,8 @@ query:
   getsuffix: "%receiver%'s suffix is <reset>%suffix%"
   list: "<%tertiary%>%player-count% online players (max %max-player-count%)<%secondary%>%player-list%"
   maxplayers: "The player limit is currently set to <%tertiary%>%max-players%<%secondary%> players"
+  render-distance: "Render distance for <%tertiary%>%receiver%<%secondary%>:<newline>- Client requested <%tertiary%>%client-view%<%secondary%> chunks<newline>- The view distance of '%world-name%' is <%tertiary%>%world-view%<%secondary%><newline>- The max server view distance for %receiver% is <%tertiary%>%server-view%<%secondary%><newline>- The server actually sent <%tertiary%>%server-sent%<%secondary%> chunks<newline>- <%tertiary%>%actual-rendered% chunks will actually be rendered"
+  view-distance: "The view distance for world '<%tertiary%>%world%<%secondary%>' is <%tertiary%>%distance%<%secondary%> chunks"
   simulation-distance: "The simulation distance for world '<%tertiary%>%world%<%secondary%>' is <%tertiary%>%distance%<%secondary%> chunks"
 
 list-player: "<newline>- %player-name%"

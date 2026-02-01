@@ -34,6 +34,7 @@ public class MessagesConfig {
     public static String confirmClear;
     public static String confirmMaxplayers;
     public static String confirmSimulationdistance;
+    public static String confirmViewdistance;
 
     public static String receiveKick;
     public static String receiveMsg;
@@ -50,6 +51,7 @@ public class MessagesConfig {
     public static String queryList;
     public static String queryMaxplayers;
     public static String querySimulationdistance;
+    public static String queryViewdistance;
 
     public static String listPlayer;
 
@@ -98,6 +100,7 @@ public class MessagesConfig {
         confirmClear = yaml.getString("confirm.clear");
         confirmMaxplayers = yaml.getString("confirm.maxplayers");
         confirmSimulationdistance = yaml.getString("confirm.simulation-distance");
+        confirmViewdistance = yaml.getString("confirm.view-distance");
         queryIpaddress = yaml.getString("query.ip-address");
         queryClientbrand = yaml.getString("query.client-brand");
         queryRenderdistance = yaml.getString("query.render-distance");
@@ -110,6 +113,7 @@ public class MessagesConfig {
         queryList = yaml.getString("query.list");
         queryMaxplayers = yaml.getString("query.maxplayers");
         querySimulationdistance = yaml.getString("query.simulation-distance");
+        queryViewdistance = yaml.getString("query.view-distance");
         listPlayer = yaml.getString("list-player");
     }
 }

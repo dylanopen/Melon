@@ -4,6 +4,7 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.dylancode.melon.config.MessagesConfig;
+import dev.dylancode.melon.viewdistance.ViewDistance;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import org.bukkit.command.CommandSender;
@@ -35,6 +36,8 @@ public class CmdRenderdistanceGet {
         placeholders.put("receiver", player.getName());
         placeholders.put("client-view", String.valueOf(player.getClientViewDistance()));
         placeholders.put("server-view", String.valueOf(player.getViewDistance()));
+        placeholders.put("world-name", player.getWorld().getName());
+        placeholders.put("world-view", String.valueOf(ViewDistance.get(player.getWorld())));
         placeholders.put("server-sent", String.valueOf(player.getSendViewDistance()));
         placeholders.put("actual-rendered", String.valueOf(actualRendered));
         return placeholders;

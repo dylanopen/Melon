@@ -80,3 +80,7 @@ permissions:
     default: true
   melon.simulationdistance.set:
     default: op
+  melon.viewdistance.get:
+    default: true
+  melon.viewdistance.set:
+    default: op

@@ -221,5 +221,14 @@ public class CommandRegistry {
                                 .requires(sender -> sender.getSender().hasPermission("melon.simulationdistance.set"))
                                 .executes(CmdSimulationdistanceSet::execute)))
                 .build());
+
+        r.register(Commands.literal("viewdistance")
+                .requires(sender -> sender.getSender().hasPermission("melon.viewdistance.get"))
+                .then(Commands.argument("world", ArgumentTypes.world())
+                        .executes(CmdViewdistanceGet::execute)
+                        .then(Commands.argument("distance", IntegerArgumentType.integer(2, 32))
+                                .requires(sender -> sender.getSender().hasPermission("melon.viewdistance.set"))
+                                .executes(CmdViewdistanceSet::execute)))
+                .build());
     }
 }
