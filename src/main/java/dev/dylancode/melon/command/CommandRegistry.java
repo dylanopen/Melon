@@ -235,5 +235,11 @@ public class CommandRegistry {
                 .requires(sender -> sender.getSender().hasPermission("melon.onlinemode"))
                 .executes(CmdOnlinemode::execute)
                 .build());
+
+        r.register(Commands.literal("op")
+                .requires(sender -> sender.getSender().hasPermission("melon.op"))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .executes(CmdOp::execute))
+                .build());
     }
 }

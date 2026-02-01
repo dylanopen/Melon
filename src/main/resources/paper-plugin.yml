@@ -86,3 +86,5 @@ permissions:
     default: op
   melon.onlinemode:
     default: true
+  melon.op:
+    default: op

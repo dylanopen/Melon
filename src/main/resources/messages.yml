@@ -23,10 +23,13 @@ confirm:
   render-distance: "Set server view distance for <%tertiary%>%receiver%<%secondary%> to <%tertiary%>%view-distance%"
   view-distance: "Set the view distance for world '<%tertiary%>%world%<%secondary%>' to <%tertiary%>%distance%<%secondary%> chunks"
   simulation-distance: "Set the simulation distance for world '<%tertiary%>%world%<%secondary%>' to <%tertiary%>%distance%<%secondary%> chunks"
+  op: "Gave operator status to <%tertiary%>%receiver%"
+  already-op: "<%tertiary%>%receiver%<%secondary%> is already an operator"
 
 receive:
   msg: "<%tertiary%>%sender% -> <%tertiary%>%receiver% <%secondary%>%message%"
   kick: "<%secondary%>You have been kicked by <%tertiary%>%sender%<newline><newline><%secondary%>Reason:<%tertiary%> %reason%"
+  op: "You have been made an operator by <%tertiary%>%sender%!"
 
 query:
   ipaddress: "%receiver%'s IP address is <%tertiary%>%ip%"

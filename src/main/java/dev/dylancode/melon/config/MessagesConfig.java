@@ -35,9 +35,12 @@ public class MessagesConfig {
     public static String confirmMaxplayers;
     public static String confirmSimulationdistance;
     public static String confirmViewdistance;
+    public static String confirmOp;
+    public static String confirmAlreadyOp;
 
     public static String receiveKick;
     public static String receiveMsg;
+    public static String receiveOp;
 
     public static String queryIpaddress;
     public static String queryClientbrand;
@@ -82,12 +85,11 @@ public class MessagesConfig {
         primaryColor = TextColor.fromHexString(Objects.requireNonNull(yaml.getString("color.primary")));
         secondaryColor = TextColor.fromHexString(Objects.requireNonNull(yaml.getString("color.secondary")));
         tertiaryColor = TextColor.fromHexString(Objects.requireNonNull(yaml.getString("color.tertiary")));
+
         confirmKick = yaml.getString("confirm.kick");
         confirmMsg = yaml.getString("confirm.msg");
         confirmFlyFallDamageEnable = yaml.getString("confirm.fly-fall-damage-enable");
         confirmFlyFallDamageDisable = yaml.getString("confirm.fly-fall-damage-disable");
-        receiveKick = yaml.getString("receive.kick");
-        receiveMsg = yaml.getString("receive.msg");
         confirmGamemode = yaml.getString("confirm.gamemode");
         confirmFlyspeed = yaml.getString("confirm.flyspeed");
         confirmWalkspeed = yaml.getString("confirm.walkspeed");
@@ -103,6 +105,13 @@ public class MessagesConfig {
         confirmMaxplayers = yaml.getString("confirm.maxplayers");
         confirmSimulationdistance = yaml.getString("confirm.simulation-distance");
         confirmViewdistance = yaml.getString("confirm.view-distance");
+        confirmOp = yaml.getString("confirm.op");
+        confirmAlreadyOp = yaml.getString("confirm.already-op");
+
+        receiveKick = yaml.getString("receive.kick");
+        receiveMsg = yaml.getString("receive.msg");
+        receiveOp = yaml.getString("receive.op");
+
         queryIpaddress = yaml.getString("query.ip-address");
         queryClientbrand = yaml.getString("query.client-brand");
         queryRenderdistance = yaml.getString("query.render-distance");
@@ -118,6 +127,7 @@ public class MessagesConfig {
         queryViewdistance = yaml.getString("query.view-distance");
         queryOnlinemodeTrue = yaml.getString("query.onlinemode-true");
         queryOnlinemodeFalse = yaml.getString("query.onlinemode-false");
+
         listPlayer = yaml.getString("list-player");
     }
 }
