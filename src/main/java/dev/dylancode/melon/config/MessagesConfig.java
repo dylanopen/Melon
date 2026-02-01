@@ -45,13 +45,16 @@ public class MessagesConfig {
     public static String queryGetnick;
     public static String queryGetprefix;
     public static String queryGetsuffix;
+    public static String queryList;
+
+    public static String listPlayer;
 
     public static Component formatMessage(String message) {
+        message = "<" + secondaryColor.asHexString() + ">" + message;
         return miniMessage().deserialize(message);
     }
 
     public static String applyPlaceholders(String message, HashMap<String, String> placeholders) {
-        message = "<%secondary%>" + message;
         placeholders.put("primary", primaryColor.asHexString());
         placeholders.put("secondary", secondaryColor.asHexString());
         placeholders.put("tertiary", tertiaryColor.asHexString());
@@ -98,5 +101,7 @@ public class MessagesConfig {
         queryGetnick = yaml.getString("query.getnick");
         queryGetprefix = yaml.getString("query.getprefix");
         queryGetsuffix = yaml.getString("query.getsuffix");
+        queryList = yaml.getString("query.list");
+        listPlayer = yaml.getString("list-player");
     }
 }

@@ -35,3 +35,6 @@ query:
   getnick: "%receiver%'s nickname is <reset>%nickname%"
   getprefix: "%receiver%'s prefix is <reset>%prefix%"
   getsuffix: "%receiver%'s suffix is <reset>%suffix%"
+  list: "Online players:%player-list%"
+
+list-player: "<newline>- %player-name%"

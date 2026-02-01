@@ -199,5 +199,9 @@ public class CommandRegistry {
                         .executes(CmdCleararmor::execute))
                 .build());
 
+        r.register(Commands.literal("list")
+                .requires(sender -> sender.getSender().hasPermission("melon.list"))
+                .executes(CmdList::execute)
+                .build());
     }
 }

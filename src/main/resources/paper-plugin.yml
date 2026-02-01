@@ -70,3 +70,5 @@ permissions:
     default: op
   melon.clearhotbar:
     default: op
+  melon.list:
+    default: true
