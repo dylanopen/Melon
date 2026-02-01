@@ -16,7 +16,6 @@ import java.util.List;
 
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
-import static net.kyori.adventure.text.minimessage.MiniMessage.miniMessage;
 
 public class CmdGetnick {
     public static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
