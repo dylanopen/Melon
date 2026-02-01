@@ -37,10 +37,13 @@ public class MessagesConfig {
     public static String confirmViewdistance;
     public static String confirmOp;
     public static String confirmAlreadyOp;
+    public static String confirmDeop;
+    public static String confirmNotOp;
 
     public static String receiveKick;
     public static String receiveMsg;
     public static String receiveOp;
+    public static String receiveDeop;
 
     public static String queryIpaddress;
     public static String queryClientbrand;
@@ -107,12 +110,15 @@ public class MessagesConfig {
         confirmViewdistance = yaml.getString("confirm.view-distance");
         confirmOp = yaml.getString("confirm.op");
         confirmAlreadyOp = yaml.getString("confirm.already-op");
+        confirmDeop = yaml.getString("confirm.deop");
+        confirmNotOp = yaml.getString("confirm.not-op");
 
         receiveKick = yaml.getString("receive.kick");
         receiveMsg = yaml.getString("receive.msg");
         receiveOp = yaml.getString("receive.op");
+        receiveDeop = yaml.getString("receive.deop");
 
-        queryIpaddress = yaml.getString("query.ip-address");
+        queryIpaddress = yaml.getString("query.ipaddress");
         queryClientbrand = yaml.getString("query.client-brand");
         queryRenderdistance = yaml.getString("query.render-distance");
         queryUuid = yaml.getString("query.uuid");

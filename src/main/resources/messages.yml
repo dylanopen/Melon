@@ -24,12 +24,15 @@ confirm:
   view-distance: "Set the view distance for world '<%tertiary%>%world%<%secondary%>' to <%tertiary%>%distance%<%secondary%> chunks"
   simulation-distance: "Set the simulation distance for world '<%tertiary%>%world%<%secondary%>' to <%tertiary%>%distance%<%secondary%> chunks"
   op: "Gave operator status to <%tertiary%>%receiver%"
+  deop: "Removed operator status from <%tertiary%>%receiver%"
   already-op: "<%tertiary%>%receiver%<%secondary%> is already an operator"
+  not-op: "<%tertiary%>%receiver%<%secondary%> is not an operator"
 
 receive:
   msg: "<%tertiary%>%sender% -> <%tertiary%>%receiver% <%secondary%>%message%"
   kick: "<%secondary%>You have been kicked by <%tertiary%>%sender%<newline><newline><%secondary%>Reason:<%tertiary%> %reason%"
   op: "You have been made an operator by <%tertiary%>%sender%!"
+  deop: "Your operator status has been removed by <%tertiary%>%sender%"
 
 query:
   ipaddress: "%receiver%'s IP address is <%tertiary%>%ip%"
