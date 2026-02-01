@@ -244,8 +244,14 @@ public class CommandRegistry {
 
         r.register(Commands.literal("deop")
                 .requires(sender -> sender.getSender().hasPermission("melon.deop"))
-                .then(Commands.argument("players", ArgumentTypes.players())
+                .then(Commands.argument("players", ArgumentTypes.playerProfiles())
                         .executes(CmdDeop::execute))
                 .build());
+
+        r.register(Commands.literal("oplist")
+                .requires(sender -> sender.getSender().hasPermission("melon.oplist"))
+                .executes(CmdOplist::execute)
+                .build())
+        ;
     }
 }

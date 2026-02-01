@@ -6,16 +6,11 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.dylancode.melon.config.MessagesConfig;
 import dev.dylancode.melon.simulationdistance.SimulationDistance;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
-import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import org.bukkit.World;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
 
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;

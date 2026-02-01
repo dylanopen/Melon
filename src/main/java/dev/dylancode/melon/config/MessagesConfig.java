@@ -60,8 +60,10 @@ public class MessagesConfig {
     public static String queryViewdistance;
     public static String queryOnlinemodeTrue;
     public static String queryOnlinemodeFalse;
+    public static String queryOplist;
 
     public static String listPlayer;
+    public static String listOperator;
 
     public static Component formatMessage(String message) {
         message = "<" + secondaryColor.asHexString() + ">" + message;
@@ -133,7 +135,9 @@ public class MessagesConfig {
         queryViewdistance = yaml.getString("query.view-distance");
         queryOnlinemodeTrue = yaml.getString("query.onlinemode-true");
         queryOnlinemodeFalse = yaml.getString("query.onlinemode-false");
+        queryOplist = yaml.getString("query.oplist");
 
         listPlayer = yaml.getString("list-player");
+        listOperator = yaml.getString("list-operator");
     }
 }

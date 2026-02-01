@@ -50,5 +50,7 @@ query:
   simulation-distance: "The simulation distance for world '<%tertiary%>%world%<%secondary%>' is <%tertiary%>%distance%<%secondary%> chunks"
   onlinemode-true: "The server is running in <%tertiary%>online mode<%secondary%> (Mojang account authentication enabled, 'not cracked')"
   onlinemode-false: "The server is running in <%tertiary%>offline mode<%secondary%> (Mojang account authentication disabled, 'cracked')"
+  oplist: "<%tertiary%>There are %op-count% server operators:<%secondary%>%op-list%"
 
 list-player: "<newline>- %player-name%"
+list-operator: "<newline>- %player-name%"

@@ -88,3 +88,7 @@ permissions:
     default: true
   melon.op:
     default: op
+  melon.deop:
+    default: op
+  melon.oplist:
+    default: true
