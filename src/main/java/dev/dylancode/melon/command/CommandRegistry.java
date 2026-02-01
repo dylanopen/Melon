@@ -168,5 +168,11 @@ public class CommandRegistry {
                         .then(Commands.argument("suffix", StringArgumentType.string())
                                 .executes(CmdSetsuffix::execute)))
                 .build());
+
+        r.register(Commands.literal("clear")
+                .requires(sender -> sender.getSender().hasPermission("melon.clear"))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .executes(CmdClear::execute))
+                .build());
     }
 }

@@ -31,6 +31,7 @@ public class MessagesConfig {
     public static String confirmSetnick;
     public static String confirmSetprefix;
     public static String confirmSetsuffix;
+    public static String confirmClear;
 
     public static String receiveKick;
     public static String receiveMsg;
@@ -87,6 +88,7 @@ public class MessagesConfig {
         confirmSetnick = yaml.getString("confirm.setnick");
         confirmSetprefix = yaml.getString("confirm.setprefix");
         confirmSetsuffix = yaml.getString("confirm.setsuffix");
+        confirmClear = yaml.getString("confirm.clear");
         queryIpaddress = yaml.getString("query.ip-address");
         queryClientbrand = yaml.getString("query.client-brand");
         queryRenderdistance = yaml.getString("query.render-distance");

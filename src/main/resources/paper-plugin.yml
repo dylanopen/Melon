@@ -62,3 +62,5 @@ permissions:
     default: true
   melon.uuid:
     default: true
+  melon.clear:
+    default: op

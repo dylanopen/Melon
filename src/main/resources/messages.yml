@@ -19,6 +19,7 @@ confirm:
   setnick: "Set <%tertiary%>%receiver%'s<%secondary%> nickname to <reset>%nickname%"
   setprefix: "Set <%tertiary%>%receiver%'s<%secondary%> prefix to <reset>%prefix%"
   setsuffix: "Set <%tertiary%>%receiver%'s<%secondary%> suffix to <reset>%suffix%"
+  clear: "Cleared %items-removed% items from <%tertiary%>%receiver%'s<%secondary%> inventory<newline>Use <%tertiary%>/undoclear %receiver%<%secondary%> to restore the items"
 
 receive:
   msg: "<%tertiary%>%sender% -> <%tertiary%>%receiver% <%secondary%>%message%"
