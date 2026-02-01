@@ -170,23 +170,24 @@ public class CommandRegistry {
                 .build());
 
         r.register(Commands.literal("clear")
-                .executes(CmdClear::executeSelf)
                 .requires(sender -> sender.getSender().hasPermission("melon.clear"))
+                .executes(CmdClear::executeSelf)
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdClear::execute))
                 .build());
 
         r.register(Commands.literal("clearslot")
-                .executes(CmdClearslot::executeSelf)
                 .requires(sender -> sender.getSender().hasPermission("melon.clearslot"))
+                .then(Commands.argument("slot", IntegerArgumentType.integer(0, 44))
+                        .executes(CmdClearslot::executeSelf))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .then(Commands.argument("slot", IntegerArgumentType.integer(0, 44))
                                 .executes(CmdClearslot::execute)))
-                .build());
+                        .build());
 
         r.register(Commands.literal("clearhotbar")
-                .executes(CmdClearhotbar::executeSelf)
                 .requires(sender -> sender.getSender().hasPermission("melon.clearhotbar"))
+                .executes(CmdClearhotbar::executeSelf)
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdClearhotbar::execute))
                 .build());
@@ -195,7 +196,7 @@ public class CommandRegistry {
                 .requires(sender -> sender.getSender().hasPermission("melon.cleararmor"))
                 .executes(CmdCleararmor::executeSelf)
                 .then(Commands.argument("players", ArgumentTypes.players())
-                                .executes(CmdCleararmor::execute))
+                        .executes(CmdCleararmor::execute))
                 .build());
 
     }

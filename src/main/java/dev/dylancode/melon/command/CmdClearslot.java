@@ -13,19 +13,21 @@ import java.util.List;
 public class CmdClearslot {
     public static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("players", PlayerSelectorArgumentResolver.class);
+        int slot = ctx.getArgument("slot", int.class);
         final List<Player> players = targetResolver.resolve(ctx.getSource());
         for (Player player : players) {
-            int itemsRemoved = Clear.slot(player.getInventory(), 0);
+            int itemsRemoved = Clear.slot(player.getInventory(), slot);
             Clear.runCommandMeta(ctx, player, itemsRemoved);
         }
         return Command.SINGLE_SUCCESS;
     }
 
     public static int executeSelf(CommandContext<CommandSourceStack> ctx) {
+        int slot = ctx.getArgument("slot", int.class);
         if (!(ctx.getSource().getExecutor() instanceof Player player)) {
             return 0;
         }
-        int itemsRemoved = Clear.slot(player.getInventory(), 0);
+        int itemsRemoved = Clear.slot(player.getInventory(), slot);
         Clear.runCommandMeta(ctx, player, itemsRemoved);
         return Command.SINGLE_SUCCESS;
     }
