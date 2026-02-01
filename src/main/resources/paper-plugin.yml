@@ -64,3 +64,5 @@ permissions:
     default: true
   melon.clear:
     default: op
+  melon.clearslot:
+    default: op

@@ -174,5 +174,12 @@ public class CommandRegistry {
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdClear::execute))
                 .build());
+
+        r.register(Commands.literal("clearslot")
+                .requires(sender -> sender.getSender().hasPermission("melon.clearslot"))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .then(Commands.argument("slot", IntegerArgumentType.integer(0, 44))
+                                .executes(CmdClearslot::execute)))
+                .build());
     }
 }
