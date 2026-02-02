@@ -260,5 +260,12 @@ public class CommandRegistry {
                         .requires(sender -> sender.getSender().hasPermission("melon.ping.others"))
                         .executes(CmdPing::execute))
                 .build());
+
+        r.register(Commands.literal("damage")
+                .requires(sender -> sender.getSender().hasPermission("melon.damage"))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .then(Commands.argument("hp", IntegerArgumentType.integer(1, 1024))
+                                .executes(CmdDamage::execute)))
+                .build());
     }
 }

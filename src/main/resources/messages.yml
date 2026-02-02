@@ -27,6 +27,7 @@ confirm:
   deop: "Removed operator status from <%tertiary%>%receiver%"
   already-op: "<%tertiary%>%receiver%<%secondary%> is already an operator"
   not-op: "<%tertiary%>%receiver%<%secondary%> is not an operator"
+  damage: "Damaged <%tertiary%>%receiver%<%secondary%> by <%tertiary%>%hp%<%secondary%> HP"
 
 receive:
   msg: "<%tertiary%>%sender% -> <%tertiary%>%receiver% <%secondary%>%message%"

@@ -96,3 +96,5 @@ permissions:
     default: true
   melon.ping.others:
     default: true
+  melon.damage:
+    default: op
