@@ -92,3 +92,7 @@ permissions:
     default: op
   melon.oplist:
     default: true
+  melon.ping:
+    default: true
+  melon.ping.others:
+    default: true

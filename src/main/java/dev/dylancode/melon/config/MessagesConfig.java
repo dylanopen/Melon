@@ -61,6 +61,7 @@ public class MessagesConfig {
     public static String queryOnlinemodeTrue;
     public static String queryOnlinemodeFalse;
     public static String queryOplist;
+    public static String queryPing;
 
     public static String listPlayer;
     public static String listOperator;
@@ -136,6 +137,7 @@ public class MessagesConfig {
         queryOnlinemodeTrue = yaml.getString("query.onlinemode-true");
         queryOnlinemodeFalse = yaml.getString("query.onlinemode-false");
         queryOplist = yaml.getString("query.oplist");
+        queryPing = yaml.getString("query.ping");
 
         listPlayer = yaml.getString("list-player");
         listOperator = yaml.getString("list-operator");

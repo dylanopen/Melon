@@ -9,6 +9,7 @@ import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
 import io.papermc.paper.plugin.lifecycle.event.registrar.ReloadableRegistrarEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class CommandRegistry {
@@ -251,7 +252,15 @@ public class CommandRegistry {
         r.register(Commands.literal("oplist")
                 .requires(sender -> sender.getSender().hasPermission("melon.oplist"))
                 .executes(CmdOplist::execute)
-                .build())
-        ;
+                .build());
+
+        r.register(Commands.literal("ping")
+                .requires(sender -> sender.getSender().hasPermission("melon.ping"))
+                        .requires(ctx -> ctx.getExecutor() instanceof Player)
+                        .executes(CmdPing::executeSelf)
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .requires(sender -> sender.getSender().hasPermission("melon.ping.others"))
+                        .executes(CmdPing::execute))
+                .build());
     }
 }
