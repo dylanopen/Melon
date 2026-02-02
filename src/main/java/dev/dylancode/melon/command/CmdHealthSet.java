@@ -4,18 +4,18 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.dylancode.melon.config.MessagesConfig;
+import dev.dylancode.melon.health.PlayerHealth;
+import dev.dylancode.melon.health.PlayerMaxHealth;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
@@ -25,10 +25,10 @@ public class CmdHealthSet {
         CommandSender sender = ctx.getSource().getSender();
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("players", PlayerSelectorArgumentResolver.class);
         final List<Player> players = targetResolver.resolve(ctx.getSource());
-        final double health = ctx.getArgument("hp", Double.class);
+        final int health = ctx.getArgument("hp", Integer.class);
         for (Player player : players) {
-            if (health > Objects.requireNonNull(player.getAttribute(Attribute.MAX_HEALTH)).getValue()) {
-                sender.sendMessage(Component.text("Cannot set " + player.getName() + "'s health above their max health", NamedTextColor.RED));
+            if (!PlayerHealth.set(player, health)) {
+                sender.sendMessage(Component.text("Cannot set " + player.getName() + "'s health above their max health of " + PlayerMaxHealth.get(player), NamedTextColor.RED));
                 continue;
             }
             HashMap<String, String> placeholders = getPlaceholders(ctx, player, health);

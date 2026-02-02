@@ -1,13 +1,11 @@
 package dev.dylancode.melon.command;
 
-import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.command.brigadier.argument.ArgumentTypes;
 import io.papermc.paper.plugin.lifecycle.event.registrar.ReloadableRegistrarEvent;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -117,7 +115,7 @@ public class CommandRegistry {
                 .requires(sender -> sender.getSender().hasPermission("melon.health.get"))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdHealthGet::execute)
-                        .then(Commands.argument("hp", DoubleArgumentType.doubleArg(0.0f))
+                        .then(Commands.argument("hp", IntegerArgumentType.integer(0, 1024))
                                 .requires(sender -> sender.getSender().hasPermission("melon.health.set"))
                                 .executes(CmdHealthSet::execute)))
                 .build());
@@ -126,7 +124,7 @@ public class CommandRegistry {
                 .requires(sender -> sender.getSender().hasPermission("melon.maxhealth.get"))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .executes(CmdMaxhealthGet::execute)
-                        .then(Commands.argument("hp", DoubleArgumentType.doubleArg(1.0f))
+                        .then(Commands.argument("hp", IntegerArgumentType.integer(1, 1024))
                                 .requires(sender -> sender.getSender().hasPermission("melon.maxhealth.set"))
                                 .executes(CmdMaxhealthSet::execute)))
                 .build());

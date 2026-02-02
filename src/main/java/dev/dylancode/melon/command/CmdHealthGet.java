@@ -4,6 +4,7 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.dylancode.melon.config.MessagesConfig;
+import dev.dylancode.melon.health.PlayerHealth;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import org.bukkit.command.CommandSender;
@@ -32,7 +33,7 @@ public class CmdHealthGet {
         HashMap<String, String> placeholders = new HashMap<>();
         placeholders.put("sender", ctx.getSource().getSender().getName());
         placeholders.put("receiver", player.getName());
-        placeholders.put("hp", String.valueOf(Math.round(player.getHealth())));
+        placeholders.put("hp", String.valueOf(PlayerHealth.get(player)));
         return placeholders;
     }
 }

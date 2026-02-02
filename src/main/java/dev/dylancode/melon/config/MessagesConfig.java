@@ -103,7 +103,7 @@ public class MessagesConfig {
         confirmFlyDisable = yaml.getString("confirm.fly-disable");
         confirmRenderdistance = yaml.getString("confirm.render-distance");
         confirmHealth = yaml.getString("confirm.health");
-        confirmMaxhealth = yaml.getString("confirm.health");
+        confirmMaxhealth = yaml.getString("confirm.maxhealth");
         confirmSetnick = yaml.getString("confirm.setnick");
         confirmSetprefix = yaml.getString("confirm.setprefix");
         confirmSetsuffix = yaml.getString("confirm.setsuffix");

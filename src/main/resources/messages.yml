@@ -39,7 +39,7 @@ query:
   client-brand: "%receiver%'s client is self-identified as <%tertiary%>%brand%"
   uuid: "UUID of %receiver% is <%tertiary%>%uuid%"
   health: "%receiver% is at <%tertiary%>%hp% HP"
-  maxhealth: "%receiver% has a maximum health (health 'scale') of <%tertiary%>%hp% HP"
+  maxhealth: "%receiver% has a maximum health of <%tertiary%>%hp% HP"
   getnick: "%receiver%'s nickname is <reset>%nickname%"
   getprefix: "%receiver%'s prefix is <reset>%prefix%"
   getsuffix: "%receiver%'s suffix is <reset>%suffix%"

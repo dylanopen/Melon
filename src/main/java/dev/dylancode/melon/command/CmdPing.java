@@ -26,7 +26,7 @@ public class CmdPing {
         return Command.SINGLE_SUCCESS;
     }
 
-    public static int executeSelf(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+    public static int executeSelf(CommandContext<CommandSourceStack> ctx) {
         Player player = (Player)ctx.getSource().getExecutor();
         run(ctx, player);
         return Command.SINGLE_SUCCESS;
