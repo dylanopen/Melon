@@ -20,7 +20,12 @@ public class ForwardBroadcast implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         HashMap<String, String> placeholders = PlayerPlaceholders.get(player, "player-");
-        Component message = formatMessage(applyPlaceholders(BroadcastConfig.playerJoin, placeholders));
+        Component message;
+        if (player.hasPlayedBefore()) {
+            message = formatMessage(applyPlaceholders(BroadcastConfig.playerJoin, placeholders));
+        } else {
+            message = formatMessage(applyPlaceholders(BroadcastConfig.playerJoinFirst, placeholders));
+        }
         event.joinMessage(null);
         new BroadcastMessage(message);
     }

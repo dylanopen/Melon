@@ -8,6 +8,7 @@ import java.io.File;
 public class BroadcastConfig {
     public static String playerJoin;
     public static String playerQuit;
+    public static String playerJoinFirst;
 
     public static void load() {
         if (!new File(Melon.plugin.getDataFolder(), "broadcasts.yml").exists()) {
@@ -18,5 +19,6 @@ public class BroadcastConfig {
 
         playerJoin = yaml.getString("player-join");
         playerQuit = yaml.getString("player-quit");
+        playerJoinFirst = yaml.getString("player-join-first");
     }
 }
