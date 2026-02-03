@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.HashMap;
 
@@ -21,6 +22,15 @@ public class ForwardBroadcast implements Listener {
         HashMap<String, String> placeholders = PlayerPlaceholders.get(player, "player-");
         Component message = formatMessage(applyPlaceholders(BroadcastConfig.playerJoin, placeholders));
         event.joinMessage(null);
+        new BroadcastMessage(message);
+    }
+
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        HashMap<String, String>placeholders = PlayerPlaceholders.get(player, "player-");
+        Component message = formatMessage(applyPlaceholders(BroadcastConfig.playerQuit,placeholders));
+        event.quitMessage(null);
         new BroadcastMessage(message);
     }
 }

@@ -1,1 +1,2 @@
 player-join: "<h>%player-displayname%</h> joined the server"
+player-quit: "<h>%player-displayname%</h> left the server"
