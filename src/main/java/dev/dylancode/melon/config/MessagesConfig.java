@@ -3,7 +3,6 @@ package dev.dylancode.melon.config;
 import dev.dylancode.melon.melon.Melon;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
