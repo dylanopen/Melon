@@ -4,6 +4,7 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.dylancode.melon.config.MessagesConfig;
+import dev.dylancode.melon.player.PlayerIP;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import org.bukkit.command.CommandSender;
@@ -25,7 +26,7 @@ public class CmdIpaddress {
             HashMap<String, String> placeholders = new HashMap<>();
             placeholders.put("sender", ctx.getSource().getSender().getName());
             placeholders.put("receiver", player.getName());
-            placeholders.put("ip", Objects.requireNonNull(player.getAddress()).getHostName());
+            placeholders.put("ip", PlayerIP.get(player));
             sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.queryIpaddress, placeholders)));
         }
         return Command.SINGLE_SUCCESS;

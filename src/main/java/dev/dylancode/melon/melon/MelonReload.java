@@ -3,6 +3,7 @@ package dev.dylancode.melon.melon;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
+import dev.dylancode.melon.config.BroadcastConfig;
 import dev.dylancode.melon.config.MessagesConfig;
 import dev.dylancode.melon.config.MotdConfig;
 import dev.dylancode.melon.customname.CustomNameStorage;
@@ -25,6 +26,7 @@ public class MelonReload {
     public static void reload() {
         MotdConfig.load();
         MessagesConfig.load();
+        BroadcastConfig.load();
         CustomNameStorage.load();
     }
 

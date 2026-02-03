@@ -3,6 +3,7 @@ package dev.dylancode.melon.config;
 import dev.dylancode.melon.melon.Melon;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -74,6 +75,8 @@ public class MessagesConfig {
     }
 
     public static String applyPlaceholders(String message, HashMap<String, String> placeholders) {
+        message = message.replace("<h>", "<%tertiary%>");
+        message = message.replace("</h>", "</%tertiary%>");
         placeholders.put("primary", primaryColor.asHexString());
         placeholders.put("secondary", secondaryColor.asHexString());
         placeholders.put("tertiary", tertiaryColor.asHexString());
