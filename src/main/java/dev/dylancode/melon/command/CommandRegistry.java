@@ -263,9 +263,25 @@ public class CommandRegistry {
 
         r.register(Commands.literal("damage")
                 .requires(sender -> sender.getSender().hasPermission("melon.damage"))
+                .then(Commands.argument("hp", IntegerArgumentType.integer(1, 1024))
+                        .requires(ctx -> ctx.getExecutor() instanceof Player)
+                        .executes(CmdDamage::executeSelf))
                 .then(Commands.argument("players", ArgumentTypes.players())
                         .then(Commands.argument("hp", IntegerArgumentType.integer(1, 1024))
                                 .executes(CmdDamage::execute)))
+                .build());
+
+        r.register(Commands.literal("heal")
+                .requires(sender -> sender.getSender().hasPermission("melon.heal"))
+                        .requires(ctx -> ctx.getExecutor() instanceof Player)
+                        .executes(CmdHeal::executeSelfFull)
+                .then(Commands.argument("hp", IntegerArgumentType.integer(1, 1024))
+                        .requires(ctx -> ctx.getExecutor() instanceof Player)
+                        .executes(CmdHeal::executeSelf))
+                .then(Commands.argument("players", ArgumentTypes.players())
+                        .executes(CmdHeal::executeFull)
+                        .then(Commands.argument("hp", IntegerArgumentType.integer(1, 1024))
+                                .executes(CmdHeal::execute)))
                 .build());
     }
 }

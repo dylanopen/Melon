@@ -40,6 +40,7 @@ public class MessagesConfig {
     public static String confirmDeop;
     public static String confirmNotOp;
     public static String confirmDamage;
+    public static String confirmHeal;
 
     public static String receiveKick;
     public static String receiveMsg;
@@ -117,6 +118,7 @@ public class MessagesConfig {
         confirmDeop = yaml.getString("confirm.deop");
         confirmNotOp = yaml.getString("confirm.not-op");
         confirmDamage = yaml.getString("confirm.damage");
+        confirmHeal = yaml.getString("confirm.heal");
 
         receiveKick = yaml.getString("receive.kick");
         receiveMsg = yaml.getString("receive.msg");

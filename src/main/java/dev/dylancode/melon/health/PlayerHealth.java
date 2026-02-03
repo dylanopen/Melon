@@ -27,4 +27,9 @@ public class PlayerHealth {
         int newHealth = PlayerHealth.get(player) + healHP;
         PlayerHealth.set(player, newHealth);
     }
+
+    public static void heal(Player player) {
+        int newHealth = PlayerMaxHealth.get(player);
+        PlayerHealth.set(player, newHealth);
+    }
 }

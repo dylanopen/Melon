@@ -5,6 +5,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.dylancode.melon.config.MessagesConfig;
 import dev.dylancode.melon.health.PlayerHealth;
+import dev.dylancode.melon.health.PlayerMaxHealth;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import org.bukkit.command.CommandSender;
@@ -17,15 +18,15 @@ import java.util.List;
 import static dev.dylancode.melon.config.MessagesConfig.applyPlaceholders;
 import static dev.dylancode.melon.config.MessagesConfig.formatMessage;
 
-public class CmdDamage {
+public class CmdHeal {
     public static int execute(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
         CommandSender sender = ctx.getSource().getSender();
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("players", PlayerSelectorArgumentResolver.class);
         final List<Player> players = targetResolver.resolve(ctx.getSource());
-        final int damageHP = ctx.getArgument("hp", Integer.class);
+        final int healHP = ctx.getArgument("hp", Integer.class);
 
         for (Player player : players) {
-            run(sender, player, damageHP);
+            run(sender, player, healHP);
         }
         return Command.SINGLE_SUCCESS;
     }
@@ -33,15 +34,34 @@ public class CmdDamage {
     public static int executeSelf(CommandContext<CommandSourceStack> ctx) {
         CommandSender sender = ctx.getSource().getSender();
         Player player = (Player)ctx.getSource().getExecutor();
-        final int damageHP = ctx.getArgument("hp", Integer.class);
-        run(sender, player, damageHP);
+        final int healHP = ctx.getArgument("hp", Integer.class);
+        run(sender, player, healHP);
         return Command.SINGLE_SUCCESS;
     }
 
-    public static void run(CommandSender sender, Player player, int damageHP) {
-        HashMap<String, String> placeholders = getPlaceholders(sender, player, damageHP);
-        PlayerHealth.damage(player, damageHP);
-        sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.confirmDamage, placeholders)));
+    public static int executeFull(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        CommandSender sender = ctx.getSource().getSender();
+        final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("players", PlayerSelectorArgumentResolver.class);
+        final List<Player> players = targetResolver.resolve(ctx.getSource());
+        for (Player player : players) {
+            final int healHP = PlayerMaxHealth.get(player) - PlayerHealth.get(player);
+            run(sender, player, healHP);
+        }
+        return Command.SINGLE_SUCCESS;
+    }
+
+    public static int executeSelfFull(CommandContext<CommandSourceStack> ctx) {
+        CommandSender sender = ctx.getSource().getSender();
+        Player player = (Player)ctx.getSource().getExecutor();
+        final int healHP = PlayerMaxHealth.get(player) - PlayerHealth.get(player);
+        run(sender, player, healHP);
+        return Command.SINGLE_SUCCESS;
+    }
+
+    public static void run(CommandSender sender, Player player, int healHP) {
+        HashMap<String, String> placeholders = getPlaceholders(sender, player, healHP);
+        PlayerHealth.heal(player, healHP);
+        sender.sendMessage(formatMessage(applyPlaceholders(MessagesConfig.confirmHeal, placeholders)));
     }
 
     private static @NotNull HashMap<String, String> getPlaceholders(CommandSender sender, Player player, double hp) {

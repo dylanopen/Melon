@@ -28,6 +28,7 @@ confirm:
   already-op: "<%tertiary%>%receiver%<%secondary%> is already an operator"
   not-op: "<%tertiary%>%receiver%<%secondary%> is not an operator"
   damage: "Damaged <%tertiary%>%receiver%<%secondary%> by <%tertiary%>%hp%<%secondary%> HP"
+  heal: "Healed <%tertiary%>%hp%<%secondary%> HP for <%tertiary%>%receiver%"
 
 receive:
   msg: "<%tertiary%>%sender% -> <%tertiary%>%receiver% <%secondary%>%message%"
