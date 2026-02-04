@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerBucketEmptyEvent;
 import org.bukkit.event.player.PlayerBucketFillEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -80,6 +81,22 @@ public class ForwardBroadcast implements Listener {
         placeholders.put("bucket-material", bucketMaterial.toString().toLowerCase());
 
         Component message = formatMessage(applyPlaceholders(BroadcastConfig.playerBucketFill,placeholders));
+        new BroadcastMessage(message);
+    }
+
+    @EventHandler
+    public void onPlayerBucketEmpty(PlayerBucketEmptyEvent event) {
+        if (BroadcastConfig.playerBucketEmpty.isEmpty()) {
+            return;
+        }
+        Block block = event.getBlock();
+        Material bucketMaterial = event.getBucket();
+        Player player = event.getPlayer();
+        HashMap<String, String>placeholders = PlayerPlaceholders.get(player, "player-");
+        placeholders.putAll(BlockPlaceholders.get(block, "block-"));
+        placeholders.put("bucket-material", bucketMaterial.toString().toLowerCase());
+
+        Component message = formatMessage(applyPlaceholders(BroadcastConfig.playerBucketEmpty, placeholders));
         new BroadcastMessage(message);
     }
 }

@@ -11,6 +11,7 @@ public class BroadcastConfig {
     public static String playerJoinFirst;
     public static String playerDeath;
     public static String playerBucketFill;
+    public static String playerBucketEmpty;
 
     public static void load() {
         if (!new File(Melon.plugin.getDataFolder(), "broadcasts.yml").exists()) {
@@ -24,5 +25,6 @@ public class BroadcastConfig {
         playerJoinFirst = yaml.getString("player-join-first");
         playerDeath = yaml.getString("player-death");
         playerBucketFill = yaml.getString("player-bucket-fill");
+        playerBucketEmpty = yaml.getString("player-bucket-empty");
     }
 }
