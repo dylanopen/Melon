@@ -4,7 +4,7 @@ color:
   tertiary: "#77cc44"
 
 confirm:
-  msg: "<h>%sender% -> %receiver% </h>%message%"
+  msg: "<h>%sender% -> %receiver-username% </h>%message%"
   kick: "</h>Kicked player(s) <h>%players% </h> for <%primary%> %reason%"
   fly-fall-damage-enable: "Toggled flying fall damage <h>ON"
   fly-fall-damage-disable: "Toggled flying fall damage <h>OFF"
@@ -31,7 +31,7 @@ confirm:
   heal: "Healed <h>%hp%</h> HP for <h>%receiver%"
 
 receive:
-  msg: "<h>%sender% -> %receiver% </h>%message%"
+  msg: "<h>%sender% -> %receiver-username% </h>%message%"
   kick: "You have been kicked by <h>%sender%<newline><newline></h>Reason:<h> %reason%"
   op: "You have been made an operator by <h>%sender%!"
   deop: "Your operator status has been removed by <h>%sender%"

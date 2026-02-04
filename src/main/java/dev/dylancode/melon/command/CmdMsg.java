@@ -4,6 +4,7 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import dev.dylancode.melon.config.MessagesConfig;
+import dev.dylancode.melon.placeholders.PlayerPlaceholders;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.argument.resolvers.selector.PlayerSelectorArgumentResolver;
 import net.kyori.adventure.text.Component;
@@ -24,11 +25,12 @@ public class CmdMsg {
         final PlayerSelectorArgumentResolver targetResolver = ctx.getArgument("player", PlayerSelectorArgumentResolver.class);
         final List<Player> players = targetResolver.resolve(ctx.getSource());
         for (Player player : players) {
-            HashMap<String, String> placeholders = new HashMap<>(Map.ofEntries(
+            HashMap<String, String> placeholders = new HashMap<>();
+            placeholders.putAll(Map.ofEntries(
                     Map.entry("sender", executor),
-                    Map.entry("receiver", player.getName()),
                     Map.entry("message", rawMessage)
             ));
+            placeholders.putAll(PlayerPlaceholders.get(player, "receiver-"));
             Component receiveMessage = miniMessage().deserialize(applyPlaceholders(MessagesConfig.receiveMsg, placeholders));
             Component confirmMessage = miniMessage().deserialize(applyPlaceholders(MessagesConfig.confirmMsg, placeholders));
             ctx.getSource().getSender().sendMessage(confirmMessage);
