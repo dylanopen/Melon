@@ -283,5 +283,12 @@ public class CommandRegistry {
                         .then(Commands.argument("hp", IntegerArgumentType.integer(1, 1024))
                                 .executes(CmdHeal::execute)))
                 .build());
+
+//        r.register(Commands.literal("fakejoin")
+//        .requires(sender -> sender.getSender().hasPermission("melon.fakejoin"))
+//                        .executes(CmdFakeJoin::executeSelf)
+//                .then(Commands.argument("playername", StringArgumentType.string())
+//                        .executes(CmdFakejoin::execute))
+//                .build());
     }
 }
